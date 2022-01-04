@@ -47,7 +47,7 @@ $emp_username = $_SESSION['emp_username'];
       display: block;
     }
 
-    #show_stadium {
+    #show_divistion {
       display: none;
     }
 
@@ -171,51 +171,24 @@ $emp_username = $_SESSION['emp_username'];
     <div class="container mx-auto" style="width:100%">
       <div class="row">
         <div class="col-2 bgLeft" style="height:150vh"><br>
-          <button class="btn btn-warning btn-sm" style="width:100%; margin-bottom:3%;" onclick="show_stadium()">ข้อมูลสนามฟุตบอล</button>
+        <div class="dropdown">
+          <button class="btn btn-warning btn-sm dropdown-toggle" style="width:100%; margin-bottom:3%;" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+           การจัดการเอกสาร
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="#">นำเข้าเอกสาร</a></li>
+            <li><a class="dropdown-item" href="#">ส่งออกเอกสาร</a></li>
+            <li><a class="dropdown-item" href="#">เอกสารนำเข้า</a></li>
+          </ul>
+        </div>
+          <button class="btn btn-warning btn-sm" style="width:100%; margin-bottom:3%;" onclick="show_divistion()">ข้อมูลกอง</button>
           <button class="btn btn-warning btn-sm" style="width:100%; margin-bottom:3%;"
-            onclick="show_member()">ข้อมูลสมาชิก</button>
+            onclick="show_member()">ข้อมูลพนักงาน</button>
           <button class="btn btn-warning btn-sm" style="width:100%; margin-bottom:3%;"
-            onclick="show_history()">สถิติการจองสนามฟุตบอล</button>
+            onclick="show_history()">สถิติการส่งเอกสาร</button>
           <button class="btn btn-warning btn-sm" style="width:100%; margin-bottom:3%;"
-            onclick="show_topup()">ประวัติการเติม Coin</button>
-          <button class="btn btn-warning btn-sm" style="width:100%; margin-bottom:3%;" data-bs-toggle="modal"
-            data-bs-target="#exampleModal3">เติม Coin</button>
+            onclick="show_topup()">คู่มือ</button>
           <!-- Button trigger modal -->
-
-          <!-- Top up -->
-          <input type="hidden" id="date_today" value="<?php echo date("Y/m/d"); ?>">
-
-          <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header bg-warning text-dark">
-                  <h5 class="modal-title" id="exampleModalLabel">เติม Coin</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="mb-3">
-                        <input type="text" class="form-control" name="m_username" id="m_username"
-                          placeholder="ชื่อผู้ใช้">
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="mb-3">
-                          <input type="text" class="form-control" name="topup_amount" id="topup_amount" placeholder="จำนวน Coin" 
-                          onKeyUp="if(isNaN(this.value)){ Swal.fire({ icon: 'error', title: 'กรุณากรอกตัวเลขใหม่อีกครั้ัง', }); this.value='';}">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="clear_modal3">ปิด</button>
-                  <button type="button" class="btn btn-success" id="butsave_topup" >ยืนยัน</button>
-                </div>
-              </div>
-            </div>
-          </div>
 
           <!-- modal edit stadium -->
           <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -277,7 +250,7 @@ $emp_username = $_SESSION['emp_username'];
                     <div class="col-md-6">
                       <div class="mb-3">
                         <input type="text" class="form-control" name="stadium_name" id="stadium_name2"
-                          placeholder="ชื่อสนาม">
+                          placeholder="ชื่อกอง">
                       </div>
                     </div>
                     <div class="col-md-6">
@@ -369,7 +342,7 @@ $emp_username = $_SESSION['emp_username'];
           
           <div id="show_history"><br>
             <center>
-              <h2>สถิติการจองสนามฟุตบอล</h2>
+              <h2>สถิติการส่งเอกสาร</h2>
             </center>
 
             <div style="float:right">
@@ -396,35 +369,17 @@ $emp_username = $_SESSION['emp_username'];
 
           <div id="show_topup"><br>
             <center>
-              <h2>ประวัติการเติม Coin</h2> 
+              <h2>คู่มือ</h2> 
             </center>
 
-            <div style="float:right">
-            ค้นหา : <input id="myInput3" type="text"><br><br>
-            </div>
-
             <div class="table-responsive-sm">
-              <table class="table table-bordered table-sm" style="border:1px; width:100%">
-                <thead>
-                  <tr style="background-color:#212529; color:white;">
-                    <th class="thcenter">ชื่อสมาชิก</th>
-                    <th class="thcenter">จำนวนการเติม</th>
-                    <th class="thcenter">วันที่เติม</th>
-                    <th class="thcenter">เวลาที่เติม</th>
-                    <th class="thcenter">เจ้าหน้าที่</th>
-                    <th class="thcenter">ลบ</th>
-                  </tr>
-                </thead>
-                <tbody id="myTable3" style="border:1px; width:100%">
-
-                </tbody>
-              </table>
+              <img src="img/11.png" alt="">
             </div>
           </div>
 
-          <div id="show_stadium"><br>
+          <div id="show_divistion"><br>
             <center>
-              <h2>ข้อมูลสนามฟุตบอล</h2>
+              <h2>ข้อมูลกอง</h2>
             </center>
 
             <div style="float:right">
@@ -435,11 +390,8 @@ $emp_username = $_SESSION['emp_username'];
               <table class="table table-bordered table-sm" style="border:1px; width:100%">
                 <thead>
                   <tr style="background-color:#212529; color:white;">
-                    <th class="thcenter">ชื่อสนาม</th>
-                    <th class="thcenter">ประเภทสนาม</th>
-                    <th class="thcenter">ราคาสนาม</th>
-                    <th class="thcenter">ต่ำสุด (คน)</th>
-                    <th class="thcenter">สูงสุด (คน)</th> 
+                    <th class="thcenter">ชื่อกอง</th>
+                    <th class="thcenter">เบอร์โทรศัพท์มือถือกอง</th>
                     <th class="thcenter">แก้ไข/ลบ</th>
                   </tr>
                 </thead>
@@ -448,7 +400,7 @@ $emp_username = $_SESSION['emp_username'];
                 </tbody>
               </table>
               <button class="glow-on-hover" style="width:10%; height:35px;" type="button" data-bs-toggle="modal"
-                data-bs-target="#exampleModal5">เพิ่มสนาม</button>
+                data-bs-target="#exampleModal5">เพิ่มกอง</button>
             </div>
           </div>
   
@@ -626,7 +578,7 @@ $emp_username = $_SESSION['emp_username'];
       $("#show_index").show();
       $("#show_history").hide();
       $("#show_topup").hide();
-      $("#show_stadium").hide();
+      $("#show_divistion").hide();
       $("#show_member").hide();
 
       $("#myInput5").on('change', function () {
@@ -653,7 +605,7 @@ $emp_username = $_SESSION['emp_username'];
       $("#show_history").show();
       $("#show_topup").hide();
       $("#show_index").hide();
-      $("#show_stadium").hide();
+      $("#show_divistion").hide();
       $("#show_member").hide();
 
       $("#myInput4").on('change', function () {
@@ -678,7 +630,7 @@ $emp_username = $_SESSION['emp_username'];
 
       $("#show_topup").show();
       $("#show_index").hide();
-      $("#show_stadium").hide();
+      $("#show_divistion").hide();
       $("#show_member").hide();
       $("#show_history").hide();
 
@@ -692,16 +644,16 @@ $emp_username = $_SESSION['emp_username'];
       });
     }
 
-    function show_stadium() {
+    function show_divistion() {
 
-      $("#show_stadium").show();
+      $("#show_divistion").show();
       $("#show_index").hide();
       $("#show_member").hide();
       $("#show_topup").hide();
       $("#show_history").hide();
 
       $.ajax({
-        url: "view_stadium.php",
+        url: "view_divistion.php",
         type: "POST",
         cache: false,
         success: function (data) {
@@ -715,7 +667,7 @@ $emp_username = $_SESSION['emp_username'];
 
       $("#show_member").show();
       $("#show_index").hide();
-      $("#show_stadium").hide();
+      $("#show_divistion").hide();
       $("#show_topup").hide();
       $("#show_history").hide();
 
@@ -836,7 +788,7 @@ $emp_username = $_SESSION['emp_username'];
                   '',
                   'success'
                 )
-                show_stadium();
+                show_divistion();
               }
               else{
                 Swal.fire({
@@ -987,7 +939,7 @@ $emp_username = $_SESSION['emp_username'];
           success: function (dataResult) {
             var dataResult = JSON.parse(dataResult);
             if (dataResult.statusCode == 200) {
-              show_stadium();
+              show_divistion();
               Swal.fire({
                 icon: 'success',
                 title: 'แก้ไขข้อมูลสำเร็จ'
@@ -1095,7 +1047,7 @@ $emp_username = $_SESSION['emp_username'];
             success: function (dataResult) {
               var dataResult = JSON.parse(dataResult);
               if (dataResult.statusCode == 200) {
-                show_stadium();
+                show_divistion();
                 Swal.fire({
                   icon: 'success',
                   title: 'เพิ่มสนามสำเร็จ',
