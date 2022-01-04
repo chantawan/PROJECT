@@ -171,8 +171,7 @@ $emp_username = $_SESSION['emp_username'];
     <div class="container mx-auto" style="width:100%">
       <div class="row">
         <div class="col-2 bgLeft" style="height:150vh"><br>
-          <button class="btn btn-warning btn-sm" style="width:100%; margin-bottom:3%;"
-            onclick="show_stadium()">ข้อมูลสนามฟุตบอล</button>
+          <button class="btn btn-warning btn-sm" style="width:100%; margin-bottom:3%;" onclick="show_stadium()">ข้อมูลสนามฟุตบอล</button>
           <button class="btn btn-warning btn-sm" style="width:100%; margin-bottom:3%;"
             onclick="show_member()">ข้อมูลสมาชิก</button>
           <button class="btn btn-warning btn-sm" style="width:100%; margin-bottom:3%;"
@@ -466,14 +465,14 @@ $emp_username = $_SESSION['emp_username'];
               <table class="table table-bordered table-sm" style="border:1px; width:100%">
                 <thead>
                   <tr style="background-color:#212529; color:white;">
-                    <th class="thcenter">ชื่อผู้ใช้</th>
                     <th class="thcenter">ชื่อจริง</th>
                     <th class="thcenter">นามสกุล</th>
-                    <th class="thcenter">ที่อยู่อีเมล</th>
+                    <th class="thcenter">อีเมลล์</th>
                     <th class="thcenter">เบอร์โทรศัพท์</th>
-                    <th class="thcenter">ที่อยู่</th>            
-                    <th class="thcenter">เหรียญ</th>
-                    <th class="thcenter">เจ้าหน้าที่</th>
+                    <th class="thcenter">ที่อยู่</th>
+                    <th class="thcenter">ชื่อผู้ใช้</th>
+                    <th class="thcenter">รหัสผ่าน</th>
+                    <th class="thcenter">รหัสเจ้าหน้าที่</th>
                     <th class="thcenter">แก้ไข/ลบ</th>                
                   </tr>
                 </thead>

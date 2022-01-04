@@ -3,18 +3,18 @@
 
     $m_id = $_POST['m_id'];
 	
-	$sql = "SELECT * FROM member where m_id = $m_id";
+	$sql = "SELECT * FROM employee where emp_id = $emp_id";
 	$result = $conn->query($sql);
     $row = $result->fetch_assoc();
 
     $data = array(
-        "m_id" => $row['m_id'],
-        "m_username" => $row['m_username'],
-        "m_firstname" => $row['m_firstname'],
-        "m_lastname" => $row['m_lastname'],
-        "m_email" => $row['m_email'],
-        "m_address" => $row['m_address'],
-        "m_tel" => $row['m_tel'],
+        "emp_id" => $row['emp_id'],
+        "emp_username" => $row['emp_username'],
+        "emp_firstname" => $row['emp_firstname'],
+        "emp_lastname" => $row['emp_lastname'],
+        "emp_email" => $row['emp_email'],
+        "emp_address" => $row['emp_address'],
+        "emp_tel" => $row['emp_tel'],
         "statusCode"=>200
     );
 
