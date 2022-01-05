@@ -242,7 +242,7 @@ $emp_username = $_SESSION['emp_username'];
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header bg-success text-white">
-                  <h5 class="modal-title" id="exampleModalLabel">เพิ่มสนาม</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">เพิ่มกอง</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -252,23 +252,9 @@ $emp_username = $_SESSION['emp_username'];
                         <input type="text" class="form-control" name="stadium_name" id="stadium_name2"
                           placeholder="ชื่อกอง">
                       </div>
-                    </div>
-                    <div class="col-md-6">
                       <div class="mb-3">
-                        <?php
-                            $sql = "SELECT * from stadium_type";
-
-                            $result = mysqli_query($conn,$sql);
-                          ?>
-                          <select name="type_id" id="type_id2" class="form-select">
-                          <?php
-                            while($row = mysqli_fetch_assoc($result)){
-                          ?>
-                                <option value="<?php echo $row["type_id"]?>"><?php echo $row["type_st_name"]?></option>              
-                              <?php
-                            }
-                          ?>
-                          </select>
+                        <input type="text" class="form-control" name="stadium_name" id="stadium_name2"
+                          placeholder="เบอร์โทรศัพท์กอง">
                       </div>
                     </div>
                   </div>
@@ -391,7 +377,7 @@ $emp_username = $_SESSION['emp_username'];
                 <thead>
                   <tr style="background-color:#212529; color:white;">
                     <th class="thcenter">ชื่อกอง</th>
-                    <th class="thcenter">เบอร์โทรศัพท์มือถือกอง</th>
+                    <th class="thcenter">เบอร์โทรศัพท์กอง</th>
                     <th class="thcenter">แก้ไข/ลบ</th>
                   </tr>
                 </thead>
