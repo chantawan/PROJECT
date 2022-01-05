@@ -79,7 +79,6 @@
             $("#but_submit").on('click',function(){
                 var m_username = $("#m_username").val();
                 var m_password = $("#m_password").val();
-
                 if( m_username != "" && m_password != "" ){
                     $.ajax({
                         url:'checkUser.php',

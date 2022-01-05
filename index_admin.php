@@ -255,8 +255,8 @@ $emp_username = $_SESSION['emp_username'];
                     </div>
                     <div class="col-md-6">
                       <div class="mb-3">
-                      <input type="text" class="form-control" name="divistion_number" id="divistion_number"
-                          placeholder="เบอร์โทรศัพท์กอง">
+                      <input type="text" class="form-control" name="stadium_name" id="stadium_name2"
+                          placeholder="เบอร์โทรกอง">
                       </div>
                     </div>
                   </div>
