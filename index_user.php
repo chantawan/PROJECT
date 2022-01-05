@@ -184,16 +184,14 @@ date_default_timezone_set("Asia/Bangkok");
     </div>
     
     <div class="row mx-auto" id="show_about">
-    <h2 class="text-white" style="padding-left:150px"><br>กฎระเบียบการใช้สนาม</h2>
+    <h2 class="text-white" style="padding-left:150px"><br><img src="img/logo.png" width="10%" alt=""> เทศบาลเมืองปัตตานี
+ถนนเดชา ตำบลสะบารัง อำเภอเมือง จังหวัดปัตตานี 94000</h2>
       <div class="col-8 mb-5 mx-auto"><br>
 
         <p class="text-white" style="font-size:20px;">
-        1. ห้ามผู้ใช้บริการ สูบบุหรี่ในสนามโดยเด็ดขาด สูบบุหรี่ในสนาม ปรับ 2,000 บาท<br>
-        2. ห้ามเล่นการพนันในสนาม<br>
-        3. งดอาหารและเครื่องดื่มที่มีแอลกอฮอล์<br>
-        4. ห้ามนำสตั๊ดปุ่มเหล็กเข้าเล่นโดยเด็ดขาด<br>
-        5. ห้ามนำสัตว์เลี้ยงเข้ามาในสนาม<br>
-        6. กรุณาดูแลทรัพย์สินส่วนตัว ทางสนามจะไม่รับผิดชอบใดๆ กรณีสูญหาย</p>
+        <img src="img/phone.png" width="5%" alt=""> โทร. 073-335918<br><br>
+        <img src="img/phone.png" width="5%" alt=""> โทรสาร 073-335919<br><br>
+        <img src="img/registration.jpg" width="5%" alt=""> saraban@patta<br>
       </div>
       
     </div>
