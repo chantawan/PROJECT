@@ -116,48 +116,13 @@ date_default_timezone_set("Asia/Bangkok");
   </nav>
 
   <div>
-    <div class="test">
-      <img src="img/i-stadium.png" id="i-stadium" class="text-dark animate__animated animate__fadeInDown" style="width:45%;"> 
-    </div>
-    <div id="show_table"><br>
-      <center><img src="img/h1.gif" style="width:20%"></center>
-      <br>
-      <table class="table table-responsive-md mx-auto bgcon2" style="border:1px; width:50%">
-        <thead>
-          <tr style="background-color:#212529; color:white;">
-            <th class="thcenter">ชื่อสนาม</th>
-            <th class="thcenter">เวลาเริ่ม</th>
-            <th class="thcenter">เวลาสิ้นสุด</th>
-          </tr>
-        </thead>
-        <tbody id="booking_now" style="border:1px; width:100%">
-          <?php                 
-            $search_date2 = date("Y-m-d");
-
-            $sql_query = "SELECT  stadium_name , time_start , time_end  
-            FROM booking a, member b, stadium c
-            WHERE a.stadium_id = c.stadium_id and b.m_id = a.m_id and a.booking_date = '$search_date2' ORDER BY `a`.`time_start` ASC";
-
-            $result = mysqli_query($conn,$sql_query);
-            $num_row = mysqli_num_rows($result);
-
-            while($row = $result->fetch_assoc()) {
-          ?>	
-              <tr style="background-color:white; color:black;">
-                  <td><?=$row['stadium_name'];?></td>
-                  <td><?=$row['time_start'];?></td>
-                  <td><?=$row['time_end'];?></td>
-              </tr>
-            <?php	
-            }                            
-            ?>
-            
-        </tbody>
-      </table><br>
-    </div>
-<<<<<<< HEAD
     
-=======
+    <div id="show_table"><br>
+      <center><img src="img/admin" style="width:20%"></center>
+      <br>
+    <br>
+    </div>
+
     <div class="row mx-auto" id="show_about">
       <br>
       <div class="col-2 mb-5"><br> <br><br>
@@ -176,7 +141,6 @@ date_default_timezone_set("Asia/Bangkok");
       รองรับการปฏิบัติงานของผู้ใช้งานได้พร้อมๆ กัน<br>
     </div>
     </div>
->>>>>>> fa2fa02d2421c9c9100440a24bc533d5e0d4aff1
     <div class="col-10 mb-10" id="show_2" align="right">
     <h3 class="text-dark"><br><br><br><br><br>ประวัติการจัดตั้งเทศบาล</h3>
     <h3 class="text-dark">การจัดตั้งเทศบาลเมืองปัตตานีในเริ่มแรกได้รวมตำบล<br>
