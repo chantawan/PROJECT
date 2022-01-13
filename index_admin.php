@@ -753,7 +753,7 @@ $emp_username = $_SESSION['emp_username'];
         if (result.isConfirmed) {
           $.ajax({
 
-            url: "delete_stadium.php",
+            url: "delete_divistion.php",
             type: 'post',
             data: {
               stadium_id: id
