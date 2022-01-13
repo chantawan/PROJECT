@@ -176,7 +176,7 @@ $emp_username = $_SESSION['emp_username'];
            การจัดการเอกสาร
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" href="#">นำเข้าเอกสาร</a></li>
+            <li><a class="dropdown-item" href="form.php">นำเข้าเอกสาร</a></li>
             <li><a class="dropdown-item" href="#">ส่งออกเอกสาร</a></li>
             <li><a class="dropdown-item" href="#">เอกสารนำเข้า</a></li>
           </ul>
@@ -255,8 +255,20 @@ $emp_username = $_SESSION['emp_username'];
                     </div>
                     <div class="col-md-6">
                       <div class="mb-3">
-                      <input type="text" class="form-control" name="stadium_name" id="stadium_name2"
-                          placeholder="เบอร์โทรกอง">
+                        <?php
+                            $sql = "SELECT * from stadium_type";
+
+                            $result = mysqli_query($conn,$sql);
+                          ?>
+                          <select name="type_id" id="type_id2" class="form-select">
+                          <?php
+                            while($row = mysqli_fetch_assoc($result)){
+                          ?>
+                                <option value="<?php echo $row["type_id"]?>"><?php echo $row["type_st_name"]?></option>              
+                              <?php
+                            }
+                          ?>
+                          </select>
                       </div>
                     </div>
                   </div>
