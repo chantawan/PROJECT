@@ -190,13 +190,13 @@ $emp_username = $_SESSION['emp_username'];
             onclick="show_topup()">คู่มือ</button>
           <!-- Button trigger modal -->
 
-          <!-- modal edit stadium -->
+          <!-- modal edit Divistion -->
           <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header bg-success text-white">
-                  <h5 class="modal-title" id="exampleModalLabel">แก้ไขข้อมูลสนามฟุตบอล</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">แก้ไขข้อมูลกอง</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -236,7 +236,7 @@ $emp_username = $_SESSION['emp_username'];
             </div>
           </div>
 
-          <!-- Add stadium -->
+          <!-- Add Divistion -->
           <div class="modal fade" id="exampleModal5" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
@@ -255,20 +255,8 @@ $emp_username = $_SESSION['emp_username'];
                     </div>
                     <div class="col-md-6">
                       <div class="mb-3">
-                        <?php
-                            $sql = "SELECT * from stadium_type";
-
-                            $result = mysqli_query($conn,$sql);
-                          ?>
-                          <select name="type_id" id="type_id2" class="form-select">
-                          <?php
-                            while($row = mysqli_fetch_assoc($result)){
-                          ?>
-                                <option value="<?php echo $row["type_id"]?>"><?php echo $row["type_st_name"]?></option>              
-                              <?php
-                            }
-                          ?>
-                          </select>
+                      <input type="text" class="form-control" name="divistion_number" id="divistion_number"
+                          placeholder="เบอร์โทรศัพท์มือถือกอง">
                       </div>
                     </div>
                   </div>
@@ -285,25 +273,16 @@ $emp_username = $_SESSION['emp_username'];
         <div class="col-10" style="background-color:white">
           <div id="show_index"><br>
             <center>
-              <h2>ข้อมูลการจอง</h2>
+              <h2>ประชาสัมพันธ์</h2>
             </center>
 
-            <div style="float:right">
-              วัน/เดือน/ปี : <input id="myInput5" type="date"><br><br>
-            </div>
+           
 
             <div class="table-responsive-sm">
               <table class="table table-bordered table-sm" style="border:1px; width:100%">
                 <thead>
                   <tr style="background-color:#212529; color:white;">
-                    <th class="thcenter">ชื่อจริง</th>
-                    <th class="thcenter">นามสกุล</th>
-                    <th class="thcenter">ชื่อสนาม</th>
-                    <th class="thcenter">วันที่จอง</th>
-                    <th class="thcenter">เวลาเริ่ม</th>
-                    <th class="thcenter">เวลาสิ้นสุด</th>
-                    <th class="thcenter">จำนวนเวลา</th>
-                    <th class="thcenter">ราคา</th>
+                    
                   </tr>
                 </thead>
                 <tbody id="booking_now" style="border:1px; width:100%">
@@ -764,7 +743,7 @@ $emp_username = $_SESSION['emp_username'];
       })
 
       swalWithBootstrapButtons.fire({
-        title: 'คุณต้องการลบข้อมูลสนามนี้หรือไม่ ?',
+        title: 'คุณต้องการลบข้อมูลกองนี้หรือไม่ ?',
         icon: 'question',
         // background: 'yellow',
         showCancelButton: true,
@@ -775,7 +754,7 @@ $emp_username = $_SESSION['emp_username'];
         if (result.isConfirmed) {
           $.ajax({
 
-            url: "delete_stadium.php",
+            url: "delete_divistion.php",
             type: 'post',
             data: {
               stadium_id: id
@@ -1033,15 +1012,15 @@ $emp_username = $_SESSION['emp_username'];
       $('#butsave_stadium').on('click', function () {
 
         var stadium_name = $('#stadium_name2').val();
-        var type_id = $('#type_id2').val();
+        var divistion_number = $('#divistion_number').val();
 
-        if (stadium_name != "" && type_id != "") {
+        if (stadium_name != "" && divistion_number != "") {
           $.ajax({
             url: "save_stadium.php",
             type: "POST",
             data: {
               stadium_name: stadium_name,
-              type_id: type_id
+              divistion_number: divistion_number
             },
             cache: false,
             success: function (dataResult) {
@@ -1050,14 +1029,14 @@ $emp_username = $_SESSION['emp_username'];
                 show_divistion();
                 Swal.fire({
                   icon: 'success',
-                  title: 'เพิ่มสนามสำเร็จ',
+                  title: 'เพิ่มกองสำเร็จ',
                 })
                 $('#exampleModal5').modal('hide');
               }
               else if (dataResult.statusCode == 201) {
                 Swal.fire({
                   icon: 'error',
-                  title: 'มีชื่อสนามนี้แล้ว',
+                  title: 'มีชื่อกองนี้แล้ว',
                 })
               }
               $('#exampleModal5').find('input[type=text], input[type=password], input[type=number], input[type=tel], input[type=email], textarea').val('');
@@ -1070,53 +1049,7 @@ $emp_username = $_SESSION['emp_username'];
       });
     });
 
-    $(document).ready(function () {
-      $('#butsave_topup').on('click', function () {
-
-        var m_username = $('#m_username').val();
-        var topup_amount = $('#topup_amount').val();
-        var date_today = $('#date_today').val();
-        var emp_id = $('#emp_id').val();
-        
-        if (m_username != "" && topup_amount != "" && emp_id != "" && date_today != "") {
-        
-            $.ajax({
-                url: "topup.php",
-                type: "POST",
-                data: {
-                    m_username: m_username,
-                    topup_amount: topup_amount,
-                    date_today: date_today,
-                    emp_id: emp_id
-                },
-                cache: false,
-                success: function (dataResult) {
-                    var dataResult = JSON.parse(dataResult);
-                    if (dataResult.statusCode == 200) {
-                        show_topup();
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'เติม Coin สำเร็จ',
-                        })
-                        $('#exampleModal3').modal('hide');       
-                    }
-                    else if (dataResult.statusCode == 201) {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'ไม่มีชื่อผู้ใช้นี้',
-                        })
-                    }
-                    $('#exampleModal3').find('input[type=text], input[type=password], input[type=number], input[type=email], textarea').val('');
-                }
-            });
-          
-        }        
-        else {
-            Swal.fire('กรุณากรอกข้อมูลให้ครบ');
-        }
-      });
-    });
-
+    
     $(document).ready(function (){
       $('#clear_modal3').on('click', function () {
         $('#exampleModal3').find('input[type=text], input[type=password], input[type=number], input[type=tel], input[type=email], textarea').val('');
