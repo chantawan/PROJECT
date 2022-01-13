@@ -746,8 +746,8 @@ $emp_username = $_SESSION['emp_username'];
         icon: 'question',
         // background: 'yellow',
         showCancelButton: true,
-        confirmButtonText: 'ยืนยัน',
         cancelButtonText: 'ยกเลิก',
+        confirmButtonText: 'ยืนยัน',
         reverseButtons: true
       }).then((result) => {
         if (result.isConfirmed) {
