@@ -8,8 +8,8 @@ if(!isset($_SESSION['emp_id'])){
 
 $emp_id = $_SESSION['emp_id'];
 $emp_username = $_SESSION['emp_username'];
-
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -160,6 +160,10 @@ $emp_username = $_SESSION['emp_username'];
               สำนักงานเทศบาลเมืองปัตตานี
               </a>
             </div>
+           
+                      
+                        
+                  
             <div class="col-md-6" style="text-align:right;">
             <label style="color:#FFFFFF83">ผู้ดูแล : <?php echo $emp_username ?> &nbsp</label><img src="img/logout.png" width="4%"><a href="logout.php?option=1"style="text-decoration:none; color:white;"> Logout </a>
             </div>
@@ -209,20 +213,8 @@ $emp_username = $_SESSION['emp_username'];
                     </div>
                     <div class="col-md-6">
                       <div class="mb-3">
-                        <?php
-                          $sql = "SELECT * from stadium_type";
-
-                          $result = mysqli_query($conn,$sql);
-                        ?>
-                        <select name="type_id" id="type_id" class="form-select">
-                        <?php
-                          while($row = mysqli_fetch_assoc($result)){
-                        ?>
-                              <option value="<?php echo $row["type_id"]?>"><?php echo $row["type_st_name"]?></option>              
-                            <?php
-                          }
-                        ?>
-                        </select>
+                      <input type="number" class="form-control" name="divistion_number" id="divistion_number"
+                          placeholder="เบอร์โทรศัพท์มือถือกอง">
                       </div>
                     </div>
                   </div>
@@ -254,7 +246,7 @@ $emp_username = $_SESSION['emp_username'];
                     </div>
                     <div class="col-md-6">
                       <div class="mb-3">
-                      <input type="text" class="form-control" name="divistion_number" id="divistion_number"
+                      <input type="number" class="form-control" name="divistion_number" id="divistion_number2"
                           placeholder="เบอร์โทรศัพท์มือถือกอง">
                       </div>
                     </div>
@@ -903,16 +895,16 @@ $emp_username = $_SESSION['emp_username'];
 
         var stadium_id = $("#stadium_id").val();
         var stadium_name = $("#stadium_name").val();
-        var type_id = $("#type_id").val();
+        var divistion_number = $("#divistion_number").val();
 
         $.ajax({
-          url: 'update_stadium.php',
+          url: 'update_divistion.php',
           method: 'post',
           datatype: 'JSON',
           data: {
             stadium_id: stadium_id,
             stadium_name: stadium_name,
-            type_id: type_id
+            divistion_number: divistion_number
           },
           success: function (dataResult) {
             var dataResult = JSON.parse(dataResult);
@@ -1011,7 +1003,7 @@ $emp_username = $_SESSION['emp_username'];
       $('#butsave_divistion').on('click', function () {
 
         var stadium_name = $('#stadium_name2').val();
-        var divistion_number = $('#divistion_number').val();
+        var divistion_number = $('#divistion_number2').val();
 
         if (stadium_name != "" && divistion_number != "") {
           $.ajax({

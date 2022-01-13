@@ -3,7 +3,7 @@
 
 	$stadium_id=$_POST['stadium_id'];
 
-	$sql1 = "SELECT * from stadium where stadium_id = $stadium_id";
+	$sql1 = "SELECT * from booking where stadium_id = $stadium_id";
 	$result = mysqli_query($conn, $sql1);
 
 	if(mysqli_num_rows($result) > 0){

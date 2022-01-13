@@ -155,22 +155,7 @@ date_default_timezone_set("Asia/Bangkok");
         </tbody>
       </table><br>
     </div>
-    <div class="row mx-auto" id="show_about">
-      <br>
-      <div class="col-2 mb-5"><br> <br><br>
-      <h3 style="transform: rotate(-90deg); color:white;"><hr style="color:white">เกี่ยวกับเรา</h3>
-      </div>
-      <div class="col-5 mb-5" style="padding-right:0px;" ><br> <br>
-        <img src="img/123.jpg" width="85%" class="shadowx">
-      </div>
-      <div class="col-5 mb-5" style="color:white; font-size:20px; padding-left:0px;"><br><br>
-        
-      I-Stadium สนามฟุตบอลหญ้าเทียม 8 สนามที่ใหญ่ที่สุดในภาคใต้ <br>
-      มีทั้ง Indoor Outdoor พร้อมสิ่งอำนวยความสะดวก นอกเหนือจากนี้แล้ว <br>
-      ยังมีคลับเฮ้าส์ สปอร์ตคลับ สำหรับออกกำลังกาย อีกทั้งยังได้มิตรภาพ<br>
-      และความสามัคคีจากการเล่นกีฬา สุขภาพดีไม่มีขาย ถ้าอยากได้มาที่<br><br>
-    </div>
-    </div>
+    
     <div class="col-10 mb-10" id="show_2" align="right">
     <h2 class="text-dark"><br>ประวัติการจัดตั้งเทศบาล</h2>
     <h2 class="text-dark">การจัดตั้งเทศบาลเมืองปัตตานีในเริ่มแรกได้รวมตำบล<br>
