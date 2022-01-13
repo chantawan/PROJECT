@@ -173,6 +173,7 @@ date_default_timezone_set("Asia/Bangkok");
         </nav>
       </div>
     </div>
+<<<<<<< HEAD
     <div class="container mx-auto" style="width:100%">
       <div class="row">
         <div class="col-2 bgLeft" style="height:150vh"><br>
@@ -554,6 +555,18 @@ date_default_timezone_set("Asia/Bangkok");
           
           </div>     
         </div>
+=======
+    
+    <div class="row mx-auto" id="show_about">
+    <h2 class="text-white" style="padding-left:150px"><br><img src="img/logo.png" width="10%" alt=""> เทศบาลเมืองปัตตานี
+ถนนเดชา ตำบลสะบารัง อำเภอเมือง จังหวัดปัตตานี 94000</h2>
+      <div class="col-8 mb-5 mx-auto"><br>
+
+        <p class="text-white" style="font-size:20px;">
+        <img src="img/phone.png" width="5%" alt=""> โทร. 073-335918<br><br>
+        <img src="img/phone.png" width="5%" alt=""> โทรสาร 073-335919<br><br>
+        <img src="img/registration.jpg" width="5%" alt=""> saraban@patta<br>
+>>>>>>> 9a5fbdb68249d0b0b5d2c9d28b845e1de790c53f
       </div>
     </div>
   </div>
