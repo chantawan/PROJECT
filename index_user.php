@@ -118,7 +118,7 @@ date_default_timezone_set("Asia/Bangkok");
   <div>
     
     <div id="show_table"><br>
-      <center><img src="img/admin" style="width:20%"></center>
+      <center><img src="img/h1.gif" style="width:20%"></center>
       <br>
     <br>
     </div>
