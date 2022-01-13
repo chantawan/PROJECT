@@ -10,7 +10,7 @@
 		echo json_encode(array("statusCode"=>201));
 	}
 	else{
-		$sql = "DELETE FROM `stadium` WHERE stadium_id=$stadium_id";
+		$sql = "DELETE FROM `divistion` WHERE stadium_id=$stadium_id";
 		$result = mysqli_query($conn, $sql);
 		echo json_encode(array("statusCode"=>200));
 	}

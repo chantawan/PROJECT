@@ -2,7 +2,7 @@
 	include 'connect.php';
 	
 	$sql_query = "SELECT  stadium_id , stadium_name , divistion_number
-    FROM stadium";
+    FROM divistion";
 
     $result = mysqli_query($conn,$sql_query);
     $num_row = mysqli_num_rows($result);

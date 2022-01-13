@@ -5,7 +5,7 @@
 	$stadium_name=$_POST['stadium_name'];
 	$divistion_number=$_POST['divistion_number'];
 
-	$sql_query = "UPDATE `stadium` 
+	$sql_query = "UPDATE `divistion` 
 	SET `stadium_name`='$stadium_name',
 	`divistion_number`='$divistion_number'
 

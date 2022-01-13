@@ -79,7 +79,7 @@ $emp_username = $_SESSION['emp_username'];
     }
 
     .glow-on-hover {
-      width: 220px;
+      width: 300px;
       height: 50px;
       border: none;
       outline: none;
@@ -88,7 +88,7 @@ $emp_username = $_SESSION['emp_username'];
       cursor: pointer;
       position: relative;
       z-index: 0;
-      border-radius: 10px;
+      border-radius: 50px;
     }
 
     .glow-on-hover:before {
@@ -281,7 +281,7 @@ $emp_username = $_SESSION['emp_username'];
                     $search_date2 = date("Y/m/d");
 
                     $sql_query = "SELECT  m_firstname , m_lastname , stadium_name , booking_date , time_start , time_end , all_time , total 
-                    FROM booking a, member b, stadium c
+                    FROM booking a, member b, divistion c
                     WHERE a.stadium_id = c.stadium_id and b.m_id = a.m_id and a.booking_date = '$search_date2' ORDER BY `a`.`time_start` ASC";
 
                     $result = mysqli_query($conn,$sql_query);
@@ -403,7 +403,7 @@ $emp_username = $_SESSION['emp_username'];
                 </tbody>
               </table>
                 <button class="glow-on-hover" style="width:10%; height:35px;" type="button" data-bs-toggle="modal"
-                  data-bs-target="#exampleModal2">สมัครสมาชิก</button>
+                  data-bs-target="#exampleModal2">เพิ่มสมาชิก</button>
                   <div class="mb-3">
             </div>
           </div>                 
@@ -468,7 +468,7 @@ $emp_username = $_SESSION['emp_username'];
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header bg-success text-white">
-                  <h5 class="modal-title" id="exampleModalLabel">สมัครสมาชิก</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">เพิ่มสมาชิก</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
