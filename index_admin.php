@@ -743,7 +743,7 @@ $emp_username = $_SESSION['emp_username'];
       })
 
       swalWithBootstrapButtons.fire({
-        title: 'คุณต้องการลบข้อมูลกองนี้หรือไม่ ?',
+        title: 'คุณต้องการลบข้อมูลนี้หรือไม่ ?',
         icon: 'question',
         // background: 'yellow',
         showCancelButton: true,
@@ -754,7 +754,7 @@ $emp_username = $_SESSION['emp_username'];
         if (result.isConfirmed) {
           $.ajax({
 
-            url: "delete_divistion.php",
+            url: "delete_stadium.php",
             type: 'post',
             data: {
               stadium_id: id

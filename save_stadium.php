@@ -10,7 +10,7 @@
 
     if($num_row == 0){
 		$sql = "INSERT INTO `stadium`( `stadium_name`, `divistion_number`) 
-		VALUES ('$stadium_name','$divistion_number')";
+		VALUES ('$divistion_number','$divistion_number')";
 
 		$result = mysqli_query($conn,$sql);
 		echo json_encode(array("statusCode"=>200));

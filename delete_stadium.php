@@ -3,6 +3,7 @@
 	date_default_timezone_set("Asia/Bangkok");
 
 	$stadium_id=$_POST['stadium_id'];
+	$date_today = date("Y-m-d");
 
 	$sql1 = "SELECT * from booking where stadium_id = $stadium_id";
 	$result = mysqli_query($conn, $sql1);
