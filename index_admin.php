@@ -161,8 +161,7 @@ $emp_username = $_SESSION['emp_username'];
               </a>
             </div>
             <div class="col-md-6" style="text-align:right;">
-              <img src="img/logout.png" width="4%"><a href="logout.php?option=1"
-                style="text-decoration:none; color:white;"> Logout </a>
+            <label style="color:#FFFFFF83">ผู้ดูแล : <?php echo $emp_username ?> &nbsp</label><img src="img/logout.png" width="4%"><a href="logout.php?option=1"style="text-decoration:none; color:white;"> Logout </a>
             </div>
           </div>
         </nav>
@@ -263,7 +262,7 @@ $emp_username = $_SESSION['emp_username'];
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="clear_modal5">ปิด</button>
-                  <button type="button" class="btn btn-success" id="butsave_stadium" >ยืนยัน</button>
+                  <button type="button" class="btn btn-success" id="butsave_divistion" >ยืนยัน</button>
                 </div>
               </div>
             </div>
@@ -743,7 +742,7 @@ $emp_username = $_SESSION['emp_username'];
       })
 
       swalWithBootstrapButtons.fire({
-        title: 'คุณต้องการลบข้อมูลนี้หรือไม่ ?',
+        title: 'คุณต้องการลบข้อมูลกองนี้หรือไม่ ?',
         icon: 'question',
         // background: 'yellow',
         showCancelButton: true,
@@ -772,7 +771,7 @@ $emp_username = $_SESSION['emp_username'];
               else{
                 Swal.fire({
                   icon: 'error',
-                  title: 'ไม่สามารถลบสนามที่มีการจองได้'
+                  title: 'ไม่สามารถลบกองได้'
                 })
               }
             }
@@ -1009,14 +1008,14 @@ $emp_username = $_SESSION['emp_username'];
     });
 
     $(document).ready(function () {
-      $('#butsave_stadium').on('click', function () {
+      $('#butsave_divistion').on('click', function () {
 
         var stadium_name = $('#stadium_name2').val();
         var divistion_number = $('#divistion_number').val();
 
         if (stadium_name != "" && divistion_number != "") {
           $.ajax({
-            url: "save_stadium.php",
+            url: "save_divistion.php",
             type: "POST",
             data: {
               stadium_name: stadium_name,
