@@ -64,7 +64,7 @@
                                 </div>
                                 <hr>
                                 <div class="mb-3">
-                                    <center><a href="register.php" class="btn-success btn btn-register">ลืมรหัสผ่าน</a></center>
+                                    <center><a href="register.php" class="btn-success btn btn-register">สมัครสมาชิก</a></center>
                                 </div>
                             </div>
                         </div>
@@ -79,6 +79,7 @@
             $("#but_submit").on('click',function(){
                 var m_username = $("#m_username").val();
                 var m_password = $("#m_password").val();
+
                 if( m_username != "" && m_password != "" ){
                     $.ajax({
                         url:'checkUser.php',
