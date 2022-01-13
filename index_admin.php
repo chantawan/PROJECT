@@ -323,11 +323,11 @@ $emp_username = $_SESSION['emp_username'];
               <table class="table table-bordered table-sm" style="border:1px; width:100%">
                 <thead>
                   <tr style="background-color:#212529; color:white;">
-                    <th class="thcenter">ชื่อสนาม</th>
-                    <th class="thcenter">จำนวนการจอง</th>
-                    <th class="thcenter">จำนวนเวลา</th>
-                    <th class="thcenter">ราคาสนาม</th>
-                    <th class="thcenter">ราคารวม</th>
+                    <th class="thcenter">วันที่ดำเนินการ</th>
+                    <th class="thcenter">ชื่อเอกสาร</th>
+                    <th class="thcenter">ประเภทเอกสาร</th>
+                    <th class="thcenter">ชั้นความเร็วเอกสาร</th>
+                    <th class="thcenter">ชั้นความลับเอกสาร</th>
                   </tr>
                 </thead>
                 <tbody id="myTable4" style="border:1px; width:100%">

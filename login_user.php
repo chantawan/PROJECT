@@ -63,9 +63,6 @@
                                     <center><button id="but_submit" class="btn-primary btn btn-login">เข้าสู่ระบบ</button></center>
                                 </div>
                                 <hr>
-                                <div class="mb-3">
-                                    <center><a href="register.php" class="btn-success btn btn-register">สมัครสมาชิก</a></center>
-                                </div>
                             </div>
                         </div>
                     </div>
