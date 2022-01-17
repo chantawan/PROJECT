@@ -12,7 +12,7 @@
 		echo json_encode(array("statusCode"=>201));
 	}
 	else{
-		$sql = "DELETE FROM `employee` WHERE emp_id = $emp_id";
+		$sql = "DELETE FROM `member` WHERE emp_id = $emp_id";
 		$result = mysqli_query($conn, $sql);
 		echo json_encode(array("statusCode"=>200));
 	}

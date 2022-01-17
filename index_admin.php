@@ -772,55 +772,6 @@ $emp_username = $_SESSION['emp_username'];
       });
     }
 
-    function OnDelete3(id) {
-      //  alert(id);
-      const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-          confirmButton: 'btn btn-success mx-2',
-          cancelButton: 'btn btn-danger mx-2'
-        },
-        buttonsStyling: false
-      })
-
-      swalWithBootstrapButtons.fire({
-        title: 'คุณต้องการลบรายการเติมเงินนี้หรือไม่ ?',
-        icon: 'question',
-        // background: 'yellow',
-        showCancelButton: true,
-        confirmButtonText: 'ยืนยัน',
-        cancelButtonText: 'ยกเลิก',
-        reverseButtons: true
-      }).then((result) => {
-        if (result.isConfirmed) {
-          $.ajax({
-
-            url: "delete_topup.php",
-            type: 'post',
-            data: {
-              topup_id: id
-            },
-            success: function (dataResult) {
-              var dataResult = JSON.parse(dataResult);
-              if (dataResult.statusCode == 200) {
-                swalWithBootstrapButtons.fire(
-                  'ลบรายการเติม Coin สำเร็จ',
-                  '',
-                  'success'
-                )
-                show_topup();
-              }
-              else{
-                Swal.fire({
-                  icon: 'error',
-                  title: 'ไม่สามารถลบรายการนี้ได้'
-                })
-              }
-            }
-          });
-        }
-      });
-    }
-
     function OnEdit2(id) {
       $.ajax({
         url: "select_stadium.php",

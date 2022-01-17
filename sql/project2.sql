@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 05, 2022 at 10:54 AM
+-- Generation Time: Jan 17, 2022 at 08:09 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -48,6 +48,25 @@ INSERT INTO `booking` (`booking_id`, `booking_date`, `time_start`, `time_end`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `divistion`
+--
+
+CREATE TABLE `divistion` (
+  `stadium_id` int(1) NOT NULL,
+  `stadium_name` varchar(20) COLLATE utf8_thai_520_w2 NOT NULL,
+  `divistion_number` varchar(10) COLLATE utf8_thai_520_w2 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_thai_520_w2;
+
+--
+-- Dumping data for table `divistion`
+--
+
+INSERT INTO `divistion` (`stadium_id`, `stadium_name`, `divistion_number`) VALUES
+(30, 'กองพัน', '0980483301');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `employee`
 --
 
@@ -67,7 +86,7 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`emp_id`, `emp_firstname`, `emp_lastname`, `emp_email`, `emp_tel`, `emp_addresss`, `emp_username`, `emp_password`) VALUES
-(1, 'Chanwit', 'Jitsuwan', 'kroekchanwitz@gmail.com', '0950420007', '341 Nipatsongkroe 5', 'kazper', 'kazper');
+(1, 'Thadphong', 'Noidam', '6310210710@email.psu.ac.th', '0805406397', 'Hatyai', 'tiee', 'tiee');
 
 -- --------------------------------------------------------
 
@@ -93,26 +112,7 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`m_id`, `m_firstname`, `m_lastname`, `m_email`, `m_tel`, `m_address`, `m_username`, `m_password`, `coin`, `emp_id`) VALUES
-(107, 'asdasd', 'asdasdas', 'dasdasd@asdasd.com', '0950420007', 'asdasdasd', 'kroek', 'kroek', 9589, 'self');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `stadium`
---
-
-CREATE TABLE `stadium` (
-  `stadium_id` int(1) NOT NULL,
-  `stadium_name` varchar(20) COLLATE utf8_thai_520_w2 NOT NULL,
-  `divistion_number` varchar(10) COLLATE utf8_thai_520_w2 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_thai_520_w2;
-
---
--- Dumping data for table `stadium`
---
-
-INSERT INTO `stadium` (`stadium_id`, `stadium_name`, `divistion_number`) VALUES
-(1, 'กองอำนวยการ', '0631699280');
+(108, 'ชาญตะวัน', 'จำรูญศิลป์', 'teeza007@email.com', '0873931606', 'คลองเรียน2', 'Chantawan', '123456789', 0, 'Cnine');
 
 -- --------------------------------------------------------
 
@@ -133,8 +133,7 @@ CREATE TABLE `stadium_type` (
 --
 
 INSERT INTO `stadium_type` (`type_id`, `type_st_name`, `type_price`, `min_person`, `max_person`) VALUES
-(1, 'สนามเล็ก', 300, 6, 12),
-(2, 'สนามใหญ่', 500, 10, 16);
+(1, 'เบอร์โทรศัพท์กอง', 300, 6, 12);
 
 -- --------------------------------------------------------
 
@@ -182,6 +181,26 @@ INSERT INTO `topup` (`topup_id`, `topup_amount`, `topup_date`, `topup_time`, `m_
 (118, 200, '2021-03-12', '16:45:55', 107, 1),
 (119, 789, '2021-03-12', '16:46:19', 107, 1);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `uploadfile`
+--
+
+CREATE TABLE `uploadfile` (
+  `fileID` int(5) NOT NULL,
+  `fileupload` varchar(200) CHARACTER SET utf8 NOT NULL,
+  `dateup` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `uploadfile`
+--
+
+INSERT INTO `uploadfile` (`fileID`, `fileupload`, `dateup`) VALUES
+(5, '202201101689825035.pdf', '2022-01-10 08:28:06'),
+(6, '202201131354647382.pdf', '2022-01-13 08:14:14');
+
 --
 -- Indexes for dumped tables
 --
@@ -191,6 +210,12 @@ INSERT INTO `topup` (`topup_id`, `topup_amount`, `topup_date`, `topup_time`, `m_
 --
 ALTER TABLE `booking`
   ADD PRIMARY KEY (`booking_id`);
+
+--
+-- Indexes for table `divistion`
+--
+ALTER TABLE `divistion`
+  ADD PRIMARY KEY (`stadium_id`);
 
 --
 -- Indexes for table `employee`
@@ -205,12 +230,6 @@ ALTER TABLE `member`
   ADD PRIMARY KEY (`m_id`);
 
 --
--- Indexes for table `stadium`
---
-ALTER TABLE `stadium`
-  ADD PRIMARY KEY (`stadium_id`);
-
---
 -- Indexes for table `stadium_type`
 --
 ALTER TABLE `stadium_type`
@@ -223,6 +242,12 @@ ALTER TABLE `topup`
   ADD PRIMARY KEY (`topup_id`);
 
 --
+-- Indexes for table `uploadfile`
+--
+ALTER TABLE `uploadfile`
+  ADD PRIMARY KEY (`fileID`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -231,6 +256,12 @@ ALTER TABLE `topup`
 --
 ALTER TABLE `booking`
   MODIFY `booking_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+
+--
+-- AUTO_INCREMENT for table `divistion`
+--
+ALTER TABLE `divistion`
+  MODIFY `stadium_id` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `employee`
@@ -242,13 +273,7 @@ ALTER TABLE `employee`
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-  MODIFY `m_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
-
---
--- AUTO_INCREMENT for table `stadium`
---
-ALTER TABLE `stadium`
-  MODIFY `stadium_id` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `m_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
 -- AUTO_INCREMENT for table `stadium_type`
@@ -261,6 +286,12 @@ ALTER TABLE `stadium_type`
 --
 ALTER TABLE `topup`
   MODIFY `topup_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
+
+--
+-- AUTO_INCREMENT for table `uploadfile`
+--
+ALTER TABLE `uploadfile`
+  MODIFY `fileID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
