@@ -170,7 +170,7 @@
 <body>
 <?php
 //1. เชื่อมต่อ database: 
-include('connect2.php');  //ไฟล์เชื่อมต่อกับ database ที่เราได้สร้างไว้ก่อนหน้าน้ี
+include('connect2.php');  //ไฟล์เชื่อมต่อกับ database ที่เราได้สร้างไว้ก่อนหน้านี้
 //2. query ข้อมูลจากตาราง: 
 $query = "SELECT * FROM uploadfile ORDER BY fileID asc" or die("Error:" . mysqli_error()); 
 //3. execute the query. 
@@ -180,13 +180,15 @@ $result = mysqli_query($con, $query);
 //ใช้ตารางในการจัดข้อมูล
 echo "<table border='1' align='center' width='500'>";
 //หัวข้อตาราง
-echo "<tr align='center' bgcolor='#FFCC33'><td>File ID</td><td>File</td><td>date_create</td></tr>";
+echo "<tr align='center' bgcolor='#FFCC33'><td>ลำดับที่</td><td>ชื่อไฟล์</td><td>วันเวลาที่อัพโหลด</td><td>เปิดไฟล์</td><td>โหลดไฟล์</td></tr>";
 while($row = mysqli_fetch_array($result)) { 
   echo "<tr>";
   echo "<td align='center'>" .$row["fileID"] .  "</td> "; 
   //echo "<td><a href='.$row['fileupload']'>showfile</a></td> ";
-  echo "<td>"  .$row["fileupload"] . "</td> ";  
-  echo "<td align='center'>" .$row["dateup"] .  "</td> ";
+  echo "<td align='center'>"  .$row["fileupload"] . "</td> ";
+  echo "<td align='center'>" .$row["dateup"] .  "</td>";
+  echo "<td align='center'> <a href='fileupload/'>View</a>";
+  echo "<td align='center'> <a href='Download.php?filename=/fileupload/202201181054087679.pdf'><fileupload src='fileupload'>Download</a>";
   echo "</tr>";
 }
 echo "</table>";
@@ -228,3 +230,7 @@ mysqli_close($con);
 </body>
 </html>
 </div>
+<?
+header('Content-Disposition: attachment; filename="test.txt"'); 
+readfile('test.txt');
+?>
