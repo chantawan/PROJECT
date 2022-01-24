@@ -200,14 +200,14 @@ mysqli_close($con);
   <p>&nbsp;</p>
   <table width="700" border="0" align="center" cellpadding="0" cellspacing="0">
     <tr>
-      <td height="40" colspan="2" align="center" bgcolor="#33CC66">Form Upload&nbsp;File</td>
+      <td height="40" colspan="2" align="center" bgcolor="#33CC66">อัพโหลดไฟล์ (PDF เท่านั้น)</td>
     </tr>
     <tr>
       <td width="126" bgcolor="#33FF66">&nbsp;</td>
       <td width="574" bgcolor="#33FF66">&nbsp;</td>
     </tr>
     <tr>
-      <td align="center" bgcolor="#33FF66">File Browser</td>
+      <td align="center" bgcolor="#33FF66">เลือกที่อยู่ไฟล์</td>
       <td bgcolor="#33FF66"><label>
         <input type="file" name="fileupload" id="fileupload"  required="required"/>
       </label></td>

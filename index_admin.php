@@ -165,7 +165,7 @@ $emp_username = $_SESSION['emp_username'];
                         
                   
             <div class="col-md-6" style="text-align:right;">
-            <label style="color:#FFFFFF83">ผู้ดูแล : <?php echo $emp_username ?> &nbsp</label><img src="img/logout.png" width="4%"><a href="logout.php?option=1"style="text-decoration:none; color:white;"> Logout </a>
+            <label style="color:#FFFFFF83">ผู้ดูแล(หน่วยสารบัญกลาง) : <?php echo $emp_username ?> &nbsp</label><img src="img/logout.png" width="4%"><a href="logout.php?option=1"style="text-decoration:none; color:white;"> Logout </a>
             </div>
           </div>
         </nav>
@@ -179,9 +179,9 @@ $emp_username = $_SESSION['emp_username'];
            การจัดการเอกสาร
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" href="form.php">นำเข้าเอกสาร</a></li>
+            <li><a class="dropdown-item" href="">นำเข้าเอกสาร</a></li>
             <li><a class="dropdown-item" href="#">ส่งออกเอกสาร</a></li>
-            <li><a class="dropdown-item" href="#">เอกสารนำเข้า</a></li>
+            <li><a class="dropdown-item" href="form.php">เอกสารนำเข้า</a></li>
           </ul>
         </div>
           <button class="btn btn-warning btn-sm" style="width:100%; margin-bottom:3%;" onclick="show_divistion()">ข้อมูลกอง</button>
@@ -203,7 +203,7 @@ $emp_username = $_SESSION['emp_username'];
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <input type="hidden" id="stadium_id">
+                  <input type="hidden" id="divistion_id">
                   <div class="row">
                     <div class="col-md-6">
                       <div class="mb-3">
@@ -221,7 +221,7 @@ $emp_username = $_SESSION['emp_username'];
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="clear_modal4">ปิด</button>
-                  <button type="button" class="btn btn-success" id="save_edit_stadium" >ยืนยัน</button>
+                  <button type="button" class="btn btn-success" id="save_edit_divistion" >ยืนยัน</button>
                 </div>
               </div>
             </div>
@@ -282,7 +282,7 @@ $emp_username = $_SESSION['emp_username'];
 
                     $sql_query = "SELECT  m_firstname , m_lastname , stadium_name , booking_date , time_start , time_end , all_time , total 
                     FROM booking a, member b, divistion c
-                    WHERE a.stadium_id = c.stadium_id and b.m_id = a.m_id and a.booking_date = '$search_date2' ORDER BY `a`.`time_start` ASC";
+                    WHERE a.divistion_id = c.divistion_id and b.m_id = a.m_id and a.booking_date = '$search_date2' ORDER BY `a`.`time_start` ASC";
 
                     $result = mysqli_query($conn,$sql_query);
                     $num_row = mysqli_num_rows($result);
@@ -393,7 +393,6 @@ $emp_username = $_SESSION['emp_username'];
                     <th class="thcenter">เบอร์โทรศัพท์</th>
                     <th class="thcenter">ที่อยู่</th>
                     <th class="thcenter">ชื่อผู้ใช้</th>
-                    <th class="thcenter">รหัสผ่าน</th>
                     <th class="thcenter">รหัสเจ้าหน้าที่</th>
                     <th class="thcenter">แก้ไข/ลบ</th>                
                   </tr>
@@ -476,7 +475,7 @@ $emp_username = $_SESSION['emp_username'];
                     <div class="col-md-5">
                       <div class="mb-3">
                         <input type="text" class="form-control" name="m_username" id="m_username2"
-                          placeholder="ชื่อผู้ใช้">
+                          placeholder="ชื่อผู้ใช้(กรอกตามชื่อจริง)">
                       </div>
                     </div>
                     <div class="col-md-7">
@@ -748,7 +747,7 @@ $emp_username = $_SESSION['emp_username'];
             url: "delete_divistion.php",
             type: 'post',
             data: {
-              stadium_id: id
+              divistion_id: divistion_id
             },
             success: function (dataResult) {
               var dataResult = JSON.parse(dataResult);
@@ -826,13 +825,13 @@ $emp_username = $_SESSION['emp_username'];
         url: "select_stadium.php",
         type: 'post',
         data: {
-          stadium_id: id
+          divistion_id: id
         },
         success: function (dataResult) {
           var dataResult = JSON.parse(dataResult);
           if (dataResult.statusCode == 200) {
 
-            $("#stadium_id").val(dataResult.stadium_id);
+            $("#divistion_id").val(dataResult.divistion_id);
             $("#stadium_name").val(dataResult.stadium_name);
             $("#type_id").val(dataResult.type_id);
           }
@@ -891,9 +890,9 @@ $emp_username = $_SESSION['emp_username'];
     });
 
     $(document).ready(function () {
-      $("#save_edit_stadium").on('click', function () {
+      $("#save_edit_divistion").on('click', function () {
 
-        var stadium_id = $("#stadium_id").val();
+        var divistion_id = $("#divistion_id").val();
         var stadium_name = $("#stadium_name").val();
         var divistion_number = $("#divistion_number").val();
 
@@ -902,7 +901,7 @@ $emp_username = $_SESSION['emp_username'];
           method: 'post',
           datatype: 'JSON',
           data: {
-            stadium_id: stadium_id,
+            divistion_id: divistion_id,
             stadium_name: stadium_name,
             divistion_number: divistion_number
           },

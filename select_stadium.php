@@ -1,14 +1,14 @@
 <?php
 	include 'connect.php';
 
-    $stadium_id = $_POST['stadium_id'];
+    $divistion_id = $_POST['divistion_id'];
 	
-	$sql = "SELECT * FROM stadium where stadium_id = $stadium_id";
+	$sql = "SELECT * FROM divistion where divistion_id = $divistion_id";
 	$result = $conn->query($sql);
     $row = $result->fetch_assoc();
 
     $data = array(
-        "stadium_id" => $row['stadium_id'],
+        "divistion_id" => $row['divistion_id'],
         "stadium_name" => $row['stadium_name'],
         "divistion_number" => $row['divistion_number'],
         "statusCode"=>200

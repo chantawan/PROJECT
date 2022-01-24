@@ -5,7 +5,7 @@
 
 	$sql_query = "SELECT  m_firstname , m_lastname , stadium_name , booking_date , time_start , time_end , all_time , total 
     FROM booking a, member b, stadium c
-    WHERE a.stadium_id = c.stadium_id and b.m_id = a.m_id and a.booking_date = '$search_date2' ORDER BY `a`.`time_start` ASC";
+    WHERE a.divistion_id = c.divistion_id and b.m_id = a.m_id and a.booking_date = '$search_date2' ORDER BY `a`.`time_start` ASC";
 
     $result = mysqli_query($conn,$sql_query);
     $num_row = mysqli_num_rows($result);
