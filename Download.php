@@ -1,5 +1,5 @@
 <?php
-if(isset($_GET["filename"]) and $_GET["filename"]!="") {
+if(isset($_GET["filename"]) and $_GET["filename"]!="filedownload") {
     $file = $_GET["filename"];
     $file = str_replace(" ","%20",$file);
     $len = filesize($file);
@@ -13,6 +13,14 @@ if(isset($_GET["filename"]) and $_GET["filename"]!="") {
     header($header );
     header("Content-Transfer-Encoding: binary");
     header("Content-Length: ".$len);
+    $file = "downloads/getfile.pdf";
+    header("Cache-Control: public");
+    header("Content-Type: application/pdf");
+    header("Content-Description: File Transfer");
+    header("Content-Transfer-Encoding: binary");
+    header("Content-Disposition: attachment; filename=" . $file);
+    header("Content-Length: " . filesize($file));
+    readfile($file);
     @readfile($file);}
     exit;
 ?>
