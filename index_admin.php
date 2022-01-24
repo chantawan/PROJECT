@@ -478,13 +478,14 @@ $emp_username = $_SESSION['emp_username'];
                           placeholder="ชื่อผู้ใช้(กรอกตามชื่อจริง)">
                       </div>
                     </div>
+                    
                     <div class="col-md-6">
                       <div class="mb-3">
                         <input type="password" class="form-control" name="m_password" id="m_password2"
                           placeholder="รหัสผ่าน">
                       </div>
                     </div>
-                  </div>
+                  
                   <div class="row">
                     <div class="col-md-6">
                       <div class="mb-3">
@@ -498,14 +499,24 @@ $emp_username = $_SESSION['emp_username'];
                           placeholder="นามสกุล">
                       </div>
                     </div>
-                  </div>
+                  
                   <div class="col-md-6">
                       <div class="mb-3">
                         <input type="number" class="form-control" name="m_lastname" id="m_lastname2"
                           placeholder="เลขบัตรประชาชน 13 หลัก">
                       </div>
                     </div>
-                  </div>
+                  
+                  <div class="col-md-3">
+                      <div class="mb-3">
+                        <select name="Sex" id="Sex" class="form-select">
+                        <option value="none">เพศ</option>
+                          <option value="1">ชาย</option>
+                          <option value="2">หญิง</option>
+                        </select>
+                      </div>
+                    </div>
+                  
                   <div class="col-md-6">
                       <div class="mb-3">
                       <?php
@@ -514,6 +525,7 @@ $emp_username = $_SESSION['emp_username'];
                           $result = mysqli_query($conn,$sql);
                         ?>
                         <select name="Position_id" id="Position_id" class="form-select">
+                          <option value="ตำแหน่ง">ตำแหน่งงาน</option>
                         <?php
                           while($row = mysqli_fetch_assoc($result)){
                         ?>
@@ -545,8 +557,7 @@ $emp_username = $_SESSION['emp_username'];
                           placeholder="ที่อยู่"></textarea>
                       </div>
                     </div>
-                  </div>
-                </div>
+                  
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="clear_modal2">ปิด</button>
                   <button type="button" class="btn btn-success" id="butsave">ยืนยัน</button>
