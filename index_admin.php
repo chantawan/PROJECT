@@ -466,19 +466,19 @@ $emp_username = $_SESSION['emp_username'];
           <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
-                <div class="modal-header bg-success text-white">
+                <div class="modal-header bg-secondary text-white">
                   <h5 class="modal-title" id="exampleModalLabel">เพิ่มสมาชิก</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                   <div class="row">
-                    <div class="col-md-5">
+                    <div class="col-md-6">
                       <div class="mb-3">
                         <input type="text" class="form-control" name="m_username" id="m_username2"
                           placeholder="ชื่อผู้ใช้(กรอกตามชื่อจริง)">
                       </div>
                     </div>
-                    <div class="col-md-7">
+                    <div class="col-md-6">
                       <div class="mb-3">
                         <input type="password" class="form-control" name="m_password" id="m_password2"
                           placeholder="รหัสผ่าน">
@@ -499,8 +499,34 @@ $emp_username = $_SESSION['emp_username'];
                       </div>
                     </div>
                   </div>
+                  <div class="col-md-6">
+                      <div class="mb-3">
+                        <input type="number" class="form-control" name="m_lastname" id="m_lastname2"
+                          placeholder="เลขบัตรประชาชน 13 หลัก">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="mb-3">
+                      <?php
+                          $sql = "SELECT * from position";
+
+                          $result = mysqli_query($conn,$sql);
+                        ?>
+                        <select name="Position_id" id="Position_id" class="form-select">
+                        <?php
+                          while($row = mysqli_fetch_assoc($result)){
+                        ?>
+                              <option value="<?php echo $row["Position_id"]?>"><?php echo $row["Position_name"]?></option>              
+                            <?php
+                          }
+                        ?>
+                        </select>
+                      </div>
+                    </div>
+                  
                   <div class="row">
-                    <div class="col-md-7">
+                    <div class="col-md-6">
                       <div class="mb-3">
                         <input type="email" class="form-control" name="m_email" id="m_email2"
                           placeholder="ที่อยู่อีเมล">
@@ -747,7 +773,7 @@ $emp_username = $_SESSION['emp_username'];
             url: "delete_divistion.php",
             type: 'post',
             data: {
-              divistion_id: divistion_id
+              divistion_id: id
             },
             success: function (dataResult) {
               var dataResult = JSON.parse(dataResult);
@@ -771,54 +797,7 @@ $emp_username = $_SESSION['emp_username'];
       });
     }
 
-    function OnDelete3(id) {
-      //  alert(id);
-      const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-          confirmButton: 'btn btn-success mx-2',
-          cancelButton: 'btn btn-danger mx-2'
-        },
-        buttonsStyling: false
-      })
-
-      swalWithBootstrapButtons.fire({
-        title: 'คุณต้องการลบรายการเติมเงินนี้หรือไม่ ?',
-        icon: 'question',
-        // background: 'yellow',
-        showCancelButton: true,
-        confirmButtonText: 'ยืนยัน',
-        cancelButtonText: 'ยกเลิก',
-        reverseButtons: true
-      }).then((result) => {
-        if (result.isConfirmed) {
-          $.ajax({
-
-            url: "delete_topup.php",
-            type: 'post',
-            data: {
-              topup_id: id
-            },
-            success: function (dataResult) {
-              var dataResult = JSON.parse(dataResult);
-              if (dataResult.statusCode == 200) {
-                swalWithBootstrapButtons.fire(
-                  'ลบรายการเติม Coin สำเร็จ',
-                  '',
-                  'success'
-                )
-                show_topup();
-              }
-              else{
-                Swal.fire({
-                  icon: 'error',
-                  title: 'ไม่สามารถลบรายการนี้ได้'
-                })
-              }
-            }
-          });
-        }
-      });
-    }
+    
 
     function OnEdit2(id) {
       $.ajax({

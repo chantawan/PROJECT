@@ -1,9 +1,9 @@
 <?php
 	include 'connect.php';
 
-	$stadium_id=$_POST['divistion_id'];
+	$divistion_id=$_POST['divistion_id'];
 
-	$sql1 = "SELECT * from booking where divistion_id = $divistion_id";
+	$sql1 = "SELECT * from employee where divistion_id = $divistion_id";
 	$result = mysqli_query($conn, $sql1);
 
 	if(mysqli_num_rows($result) > 0){
