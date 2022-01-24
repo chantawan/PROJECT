@@ -466,7 +466,7 @@ $emp_username = $_SESSION['emp_username'];
           <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
-                <div class="modal-header bg-secondary text-white">
+                <div class="modal-header bg-primary text-white">
                   <h5 class="modal-title" id="exampleModalLabel">เพิ่มสมาชิก</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
