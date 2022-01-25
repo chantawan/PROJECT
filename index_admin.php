@@ -166,7 +166,7 @@ $Position_name = $_SESSION['Position_name'];
                         
                   
             <div class="col-md-6" style="text-align:right;">
-            <label style="color:#FFFFFF83">บทบาท : <?php echo $emp_username ?> &nbsp</label>
+            <label style="color:#FFFFFF83">ชื่อผู้ใช้ : <?php echo $emp_username ?> &nbsp</label>
             <label style="color:#FFFFFF83">บทบาท : <?php echo $Position_name ?> &nbsp</label>
             </div>
           </div>
@@ -271,9 +271,6 @@ $Position_name = $_SESSION['Position_name'];
             <center>
               <h2>ประชาสัมพันธ์</h2>
             </center>
-
-           
-
             <div class="table-responsive-sm">
               <table class="table table-bordered table-sm" style="border:1px; width:100%">
                 <thead>
@@ -281,33 +278,7 @@ $Position_name = $_SESSION['Position_name'];
                     
                   </tr>
                 </thead>
-                <tbody id="booking_now" style="border:1px; width:100%">
-                  <?php                 
-                    $search_date2 = date("Y/m/d");
-
-                    $sql_query = "SELECT  m_firstname , m_lastname , stadium_name , booking_date , time_start , time_end , all_time , total 
-                    FROM booking a, member b, divistion c
-                    WHERE a.divistion_id = c.divistion_id and b.m_id = a.m_id and a.booking_date = '$search_date2' ORDER BY `a`.`time_start` ASC";
-
-                    $result = mysqli_query($conn,$sql_query);
-                    $num_row = mysqli_num_rows($result);
-
-                    while($row = $result->fetch_assoc()) {
-                  ?>	
-                      <tr>
-                          <td><?=$row['m_firstname'];?></td>
-                          <td><?=$row['m_lastname'];?></td>
-                          <td><?=$row['stadium_name'];?></td>
-                          <td><?=$row['booking_date'];?></td>
-                          <td><?=$row['time_start'];?></td>
-                          <td><?=$row['time_end'];?></td>
-                          <td><?=$row['all_time'];?></td>
-                          <td><?=$row['total'];?></td>
-                      </tr>
-                    <?php	
-                    }                            
-                    ?>
-                </tbody>
+                
                 <tbody id="myTable5" style="border:1px; width:100%">
 
                 </tbody>
@@ -584,7 +555,7 @@ $Position_name = $_SESSION['Position_name'];
     show_index();
     function show_index() {
 
-      $("#show_index").hide();
+      $("#show_index").show();
       $("#show_history").hide();
       $("#show_topup").hide();
       $("#show_divistion").hide();
