@@ -6,7 +6,7 @@ $m_password = $_POST['m_password'];
 
     $sql_query = "SELECT a.m_id , a.m_firstname , a.Position_id , b.Position_name from member a
      JOIN position b ON a.Position_id = b.Position_id
-     where m_firstname = '$m_firstname' and m_password = '$m_password'";
+     where a.m_firstname = '$m_firstname' and a.m_password = '$m_password' and a.Position_id < 4" ;
     $result = mysqli_query($conn,$sql_query);
     $num_row = mysqli_num_rows($result);
 

@@ -563,7 +563,7 @@ $Position_name = $_SESSION['Position_name'];
 
       $("#myInput5").on('change', function () {
 
-      var search_date2 = $("#myInput5").val();
+  
       });
     }
 

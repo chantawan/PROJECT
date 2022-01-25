@@ -9,7 +9,7 @@ if ($emp_username != "" && $emp_password != ""){
 
     $sql_query = "SELECT a.emp_id , a.emp_username , a.Position_id , b.Position_name from employee a 
     JOIN position b ON a.Position_id = b.Position_id
-    where emp_username = '$emp_username' and emp_password = '$emp_password'";
+    where a.emp_username = '$emp_username' and a.emp_password = '$emp_password' and a.Position_id = 4";
     $result = mysqli_query($conn,$sql_query);
     $num_row = mysqli_num_rows($result);
 
