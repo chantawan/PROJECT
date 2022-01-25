@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 25, 2022 at 09:14 AM
+-- Generation Time: Jan 25, 2022 at 11:58 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -24,30 +24,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `booking`
---
-
-CREATE TABLE `booking` (
-  `booking_id` int(3) NOT NULL,
-  `booking_date` date NOT NULL,
-  `time_start` time NOT NULL,
-  `time_end` time NOT NULL,
-  `all_time` int(11) NOT NULL,
-  `total` int(5) NOT NULL,
-  `divistion_id` int(1) NOT NULL,
-  `m_id` int(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_thai_520_w2;
-
---
--- Dumping data for table `booking`
---
-
-INSERT INTO `booking` (`booking_id`, `booking_date`, `time_start`, `time_end`, `all_time`, `total`, `divistion_id`, `m_id`) VALUES
-(87, '2021-03-12', '19:00:00', '22:00:00', 3, 1500, 1, 107);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `divistion`
 --
 
@@ -62,7 +38,8 @@ CREATE TABLE `divistion` (
 --
 
 INSERT INTO `divistion` (`divistion_id`, `stadium_name`, `divistion_number`) VALUES
-(1, 'สารณะสุข', '1150');
+(1, 'สารณะสุข', '1150'),
+(36, 'กองร้อย', '1234156');
 
 -- --------------------------------------------------------
 
@@ -76,43 +53,18 @@ CREATE TABLE `employee` (
   `emp_lastname` varchar(50) COLLATE utf8_thai_520_w2 NOT NULL,
   `emp_email` varchar(50) COLLATE utf8_thai_520_w2 NOT NULL,
   `emp_tel` varchar(10) COLLATE utf8_thai_520_w2 NOT NULL,
-  `emp_addresss` text COLLATE utf8_thai_520_w2 NOT NULL,
-  `emp_username` varchar(20) COLLATE utf8_thai_520_w2 NOT NULL,
   `emp_password` varchar(100) COLLATE utf8_thai_520_w2 NOT NULL,
-  `divistion_id` int(1) NOT NULL
+  `divistion_id` int(1) NOT NULL,
+  `Position_id` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_thai_520_w2;
 
 --
 -- Dumping data for table `employee`
 --
 
-INSERT INTO `employee` (`emp_id`, `emp_firstname`, `emp_lastname`, `emp_email`, `emp_tel`, `emp_addresss`, `emp_username`, `emp_password`, `divistion_id`) VALUES
-(1, 'Thadphong', 'Noidam', '6310210710@email.psu.ac.th', '0805406397', 'Hatyai', 'tiee', 'tiee', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `member`
---
-
-CREATE TABLE `member` (
-  `m_id` int(3) NOT NULL,
-  `m_firstname` varchar(50) COLLATE utf8_thai_520_w2 NOT NULL,
-  `m_lastname` varchar(50) COLLATE utf8_thai_520_w2 NOT NULL,
-  `m_email` varchar(50) COLLATE utf8_thai_520_w2 NOT NULL,
-  `m_tel` varchar(10) COLLATE utf8_thai_520_w2 NOT NULL,
-  `m_address` text COLLATE utf8_thai_520_w2 NOT NULL,
-  `m_password` varchar(100) COLLATE utf8_thai_520_w2 NOT NULL,
-  `emp_id` varchar(20) COLLATE utf8_thai_520_w2 NOT NULL,
-  `Position_id` int(6) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_thai_520_w2;
-
---
--- Dumping data for table `member`
---
-
-INSERT INTO `member` (`m_id`, `m_firstname`, `m_lastname`, `m_email`, `m_tel`, `m_address`, `m_password`, `emp_id`, `Position_id`) VALUES
-(116, 'Chantawan', 'Janroonsilp', 'love-za60@hotmail.com', '0980483301', '545156151', '1234', 'tiee', 2);
+INSERT INTO `employee` (`emp_id`, `emp_firstname`, `emp_lastname`, `emp_email`, `emp_tel`, `emp_password`, `divistion_id`, `Position_id`) VALUES
+(1, 'tiee', 'Noidam', '6310210710@email.psu.ac.th', '0805406397', '1234', 1, 4),
+(2, 'chantawan', 'jamroonsilp', 'love-za60@hotmail.com', '0980483301', '1234', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -122,7 +74,7 @@ INSERT INTO `member` (`m_id`, `m_firstname`, `m_lastname`, `m_email`, `m_tel`, `
 
 CREATE TABLE `position` (
   `Position_id` int(6) NOT NULL,
-  `Position_name` varchar(20) NOT NULL
+  `Position_name` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -132,7 +84,8 @@ CREATE TABLE `position` (
 INSERT INTO `position` (`Position_id`, `Position_name`) VALUES
 (1, 'พนักงาน'),
 (2, 'หัวหน้างาน'),
-(3, 'เลขานุการ');
+(3, 'เลขานุการ'),
+(4, 'ผู้ดูแล(หน่วยสารบัญกลาง)');
 
 -- --------------------------------------------------------
 
@@ -181,12 +134,6 @@ INSERT INTO `uploadfile` (`fileID`, `fileupload`, `dateup`) VALUES
 --
 
 --
--- Indexes for table `booking`
---
-ALTER TABLE `booking`
-  ADD PRIMARY KEY (`booking_id`);
-
---
 -- Indexes for table `divistion`
 --
 ALTER TABLE `divistion`
@@ -197,12 +144,6 @@ ALTER TABLE `divistion`
 --
 ALTER TABLE `employee`
   ADD PRIMARY KEY (`emp_id`);
-
---
--- Indexes for table `member`
---
-ALTER TABLE `member`
-  ADD PRIMARY KEY (`m_id`);
 
 --
 -- Indexes for table `position`
@@ -227,28 +168,16 @@ ALTER TABLE `uploadfile`
 --
 
 --
--- AUTO_INCREMENT for table `booking`
---
-ALTER TABLE `booking`
-  MODIFY `booking_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
-
---
 -- AUTO_INCREMENT for table `divistion`
 --
 ALTER TABLE `divistion`
-  MODIFY `divistion_id` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `divistion_id` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `emp_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `member`
---
-ALTER TABLE `member`
-  MODIFY `m_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
+  MODIFY `emp_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `stadium_type`

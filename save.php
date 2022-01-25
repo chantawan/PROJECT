@@ -7,13 +7,12 @@
 		$emp_username = $_SESSION['emp_username'];
 	}
 	 
-	$m_username=$_POST['m_username'];
-	$m_password=$_POST['m_password'];
-	$m_firstname=$_POST['m_firstname'];
-	$m_lastname=$_POST['m_lastname'];
-    $m_email=$_POST['m_email'];
-	$m_address=$_POST['m_address'];
-	$m_tel=$_POST['m_tel'];
+	$emp_username=$_POST['emp_username'];
+	$emp_password=$_POST['emp_password'];
+	$emp_firstname=$_POST['emp_firstname'];
+	$emp_lastname=$_POST['emp_lastname'];
+    $emp_email=$_POST['emp_email'];
+	$emp_tel=$_POST['emp_tel'];
 
 	$sql_query = "SELECT m_username from member where m_username = '$m_username'";
     $result = mysqli_query($conn,$sql_query);

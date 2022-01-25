@@ -54,10 +54,10 @@
                             <div class="col-md-6"><br>
                                <center><h4>ยินดีต้อนรับ</h4></center><br>
                                 <div class="mb-3 mx-auto" style="width:70%" >
-                                    <center><input type="text" class="form-control" id="m_firstname" name="m_firstname" placeholder="ชื่อผู้ใช้" required></center>
+                                    <center><input type="text" class="form-control" id="emp_firstname" name="emp_firstname" placeholder="ชื่อผู้ใช้" required></center>
                                 </div>
                                 <div class="mb-3 mx-auto" style="width:70%">
-                                    <center><input type="password" class="form-control" id="m_password" name="m_password" placeholder="รหัสผ่าน" required></center>
+                                    <center><input type="password" class="form-control" id="emp_password" name="emp_password" placeholder="รหัสผ่าน" required></center>
                                 </div>
                                 <div class="mb-3">
                                     <center><button id="but_submit" class="btn-primary btn btn-login">เข้าสู่ระบบ</button></center>
@@ -74,16 +74,16 @@
     <script>
         $(document).ready(function(){
             $("#but_submit").on('click',function(){
-                var m_firstname = $("#m_firstname").val();
-                var m_password = $("#m_password").val();
+                var emp_firstname = $("#emp_firstname").val();
+                var emp_password = $("#emp_password").val();
 
-                if( m_firstname != "" && m_password != "" ){
+                if( emp_firstname != "" && emp_password != "" ){
                     $.ajax({
                         url:'checkUser.php',
                         type:'post',
                         data:{
-                            m_firstname: m_firstname,
-                            m_password: m_password
+                            emp_firstname: emp_firstname,
+                            emp_password: emp_password
                         },
                         success: function(dataResult) {
                             var dataResult = JSON.parse(dataResult);
@@ -96,7 +96,6 @@
                                     title: 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง',
                                 })
                             }
-                            
                         }
                     });
                 }

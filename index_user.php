@@ -1,12 +1,12 @@
 <?php
 include "connect.php";
 
-if(!isset($_SESSION['m_id'])){
+if(!isset($_SESSION['emp_id'])){
    header('Location: login_user.php');
 }
 
-$m_id = $_SESSION['m_id'];
-$m_firstname = $_SESSION['m_firstname'];
+$emp_id = $_SESSION['emp_id'];
+$emp_firstname = $_SESSION['emp_firstname'];
 $Position_name = $_SESSION['Position_name'];
 
 date_default_timezone_set("Asia/Bangkok");
@@ -111,7 +111,7 @@ date_default_timezone_set("Asia/Bangkok");
         </div>   
       </div>
       <div style="text-align:right; float:right;">
-        <label style="color:#FFFFFF83">ชื่อผู้ใช้ : <?php echo $m_firstname ?> &nbsp</label>
+        <label style="color:#FFFFFF83">ชื่อผู้ใช้ : <?php echo $emp_firstname ?> &nbsp</label>
         <label style="color:#FFFFFF83">บทบาท : <?php echo $Position_name ?> &nbsp</label>
       </div>
     </div>

@@ -55,7 +55,7 @@
                             <div class="col-md-6"><br>
                                <center><h4>เจ้าหน้าที่</h4></center><br>
                                 <div class="mb-3 mx-auto" style="width:70%" >
-                                    <center><input type="text" class="form-control" id="emp_username" name="emp_username" placeholder="ชื่อผู้ใช้" required></center>
+                                    <center><input type="text" class="form-control" id="emp_firstname" name="emp_firstname" placeholder="ชื่อผู้ใช้" required></center>
                                 </div>
                                 <div class="mb-3 mx-auto" style="width:70%">
                                     <center><input type="password" class="form-control" id="emp_password" name="emp_password" placeholder="รหัสผ่าน" required></center>
@@ -74,15 +74,15 @@
     <script>
         $(document).ready(function(){
             $("#but_submit").on('click',function(){
-                var emp_username = $("#emp_username").val();
+                var emp_firstname = $("#emp_firstname").val();
                 var emp_password = $("#emp_password").val();
 
-                if( emp_username != "" && emp_password != "" ){
+                if( emp_firstname != "" && emp_password != "" ){
                     $.ajax({
                         url:'checkAdmin.php',
                         type:'post',
                         data:{
-                            emp_username: emp_username,
+                            emp_firstname: emp_firstname,
                             emp_password: emp_password
                         },
                         success: function(dataResult) {

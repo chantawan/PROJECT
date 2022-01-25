@@ -7,7 +7,7 @@ if(!isset($_SESSION['emp_id'])){
 }
 
 $emp_id = $_SESSION['emp_id'];
-$emp_username = $_SESSION['emp_username'];
+$emp_firstname = $_SESSION['emp_firstname'];
 $Position_name = $_SESSION['Position_name'];
 ?>
 
@@ -166,7 +166,7 @@ $Position_name = $_SESSION['Position_name'];
                         
                   
             <div class="col-md-6" style="text-align:right;">
-            <label style="color:#FFFFFF83">ชื่อผู้ใช้ : <?php echo $emp_username ?> &nbsp</label>
+            <label style="color:#FFFFFF83">ชื่อผู้ใช้ : <?php echo $emp_firstname ?> &nbsp</label>
             <label style="color:#FFFFFF83">บทบาท : <?php echo $Position_name ?> &nbsp</label>
             </div>
           </div>
@@ -452,31 +452,31 @@ $Position_name = $_SESSION['Position_name'];
                   <div class="row">
                   <div class="col-md-6">
                       <div class="mb-3">
-                        <input type="text" class="form-control" name="m_id" id="m_firstname2"
+                        <input type="text" class="form-control" name="emp_id" id="m_firstname2"
                           placeholder="รหัสพนักงาน">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="mb-3">
-                        <input type="text" class="form-control" name="m_firstname" id="m_firstname2"
+                        <input type="text" class="form-control" name="emp_firstname" id="m_firstname2"
                           placeholder="ชื่อจริง">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="mb-3">
-                        <input type="text" class="form-control" name="m_lastname" id="m_lastname2"
+                        <input type="text" class="form-control" name="emp_lastname" id="m_lastname2"
                           placeholder="นามสกุล">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="mb-3">
-                        <input type="password" class="form-control" name="m_password" id="m_password2"
+                        <input type="password" class="form-control" name="emp_password" id="m_password2"
                           placeholder="รหัสผ่าน">
                       </div>
                     </div>
                   <div class="col-md-6">
                       <div class="mb-3">
-                        <input type="number" class="form-control" name="m_lastname" id="m_lastname2"
+                        <input type="number" class="form-control" name="emp_lastname" id="m_lastname2"
                           placeholder="เลขบัตรประชาชน 13 หลัก">
                       </div>
                     </div>
