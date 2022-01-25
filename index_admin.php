@@ -8,6 +8,7 @@ if(!isset($_SESSION['emp_id'])){
 
 $emp_id = $_SESSION['emp_id'];
 $emp_username = $_SESSION['emp_username'];
+$Position_name = $_SESSION['Position_name'];
 ?>
 
 
@@ -165,7 +166,8 @@ $emp_username = $_SESSION['emp_username'];
                         
                   
             <div class="col-md-6" style="text-align:right;">
-            <label style="color:#FFFFFF83">ผู้ดูแล(หน่วยสารบัญกลาง) : <?php echo $emp_username ?> &nbsp</label><img src="img/logout.png" width="4%"><a href="logout.php?option=1"style="text-decoration:none; color:white;"> Logout </a>
+            <label style="color:#FFFFFF83">บทบาท : <?php echo $emp_username ?> &nbsp</label>
+            <label style="color:#FFFFFF83">บทบาท : <?php echo $Position_name ?> &nbsp</label>
             </div>
           </div>
         </nav>
@@ -191,6 +193,9 @@ $emp_username = $_SESSION['emp_username'];
             onclick="show_history()">สถิติการส่งเอกสาร</button>
           <button class="btn btn-warning btn-sm" style="width:100%; margin-bottom:3%;"
             onclick="show_topup()">คู่มือ</button>
+           <button class="btn btn-danger btn-sm" style="width:100%; margin-bottom:3%;">
+            <a class="nav-link" href="logout.php?option=1" style = "color:black">ออกจากระบบ</a></button> 
+            
           <!-- Button trigger modal -->
 
           <!-- modal edit Divistion -->
@@ -579,7 +584,7 @@ $emp_username = $_SESSION['emp_username'];
     show_index();
     function show_index() {
 
-      $("#show_index").show();
+      $("#show_index").hide();
       $("#show_history").hide();
       $("#show_topup").hide();
       $("#show_divistion").hide();
@@ -588,19 +593,6 @@ $emp_username = $_SESSION['emp_username'];
       $("#myInput5").on('change', function () {
 
       var search_date2 = $("#myInput5").val();
-
-        $.ajax({
-          url: "view_booking.php",
-          type: "POST",
-          cache: false,
-          data: {
-            search_date2: search_date2
-          },
-          success: function (data) {
-            $('#booking_now').hide();
-            $('#myTable5').html(data);
-          }
-        });
       });
     }
 
