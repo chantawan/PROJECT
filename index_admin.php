@@ -387,18 +387,20 @@ $emp_username = $_SESSION['emp_username'];
               <table class="table table-bordered table-sm" style="border:1px; width:100%">
                 <thead>
                   <tr style="background-color:#212529; color:white;">
+                  <th class="thcenter">รหัสพนักงาน</th>
                     <th class="thcenter">ชื่อจริง</th>
                     <th class="thcenter">นามสกุล</th>
+                    <th class="thcenter">เพศ</th>
                     <th class="thcenter">อีเมลล์</th>
+                    <th class="thcenter">เลขบัตรประชาชน</th>
                     <th class="thcenter">เบอร์โทรศัพท์</th>
-                    <th class="thcenter">ที่อยู่</th>
-                    <th class="thcenter">ชื่อผู้ใช้</th>
-                    <th class="thcenter">รหัสเจ้าหน้าที่</th>
+                    <th class="thcenter">กอง</th>
+                    <th class="thcenter">บทบาท</th>
+                    <th class="thcenter">ชื่อเจ้าหน้าที่</th>
                     <th class="thcenter">แก้ไข/ลบ</th>                
                   </tr>
                 </thead>
                 <tbody id="myTable" style="border:1px; width:100%">
-
                 </tbody>
               </table>
                 <button class="glow-on-hover" style="width:10%; height:35px;" type="button" data-bs-toggle="modal"
@@ -472,21 +474,12 @@ $emp_username = $_SESSION['emp_username'];
                 </div>
                 <div class="modal-body">
                   <div class="row">
-                    <div class="col-md-6">
+                  <div class="col-md-6">
                       <div class="mb-3">
-                        <input type="text" class="form-control" name="m_username" id="m_username2"
-                          placeholder="ชื่อผู้ใช้(กรอกตามชื่อจริง)">
+                        <input type="text" class="form-control" name="m_id" id="m_firstname2"
+                          placeholder="รหัสพนักงาน">
                       </div>
                     </div>
-                    
-                    <div class="col-md-6">
-                      <div class="mb-3">
-                        <input type="password" class="form-control" name="m_password" id="m_password2"
-                          placeholder="รหัสผ่าน">
-                      </div>
-                    </div>
-                  
-                  <div class="row">
                     <div class="col-md-6">
                       <div class="mb-3">
                         <input type="text" class="form-control" name="m_firstname" id="m_firstname2"
@@ -499,7 +492,12 @@ $emp_username = $_SESSION['emp_username'];
                           placeholder="นามสกุล">
                       </div>
                     </div>
-                  
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <input type="password" class="form-control" name="m_password" id="m_password2"
+                          placeholder="รหัสผ่าน">
+                      </div>
+                    </div>
                   <div class="col-md-6">
                       <div class="mb-3">
                         <input type="number" class="form-control" name="m_lastname" id="m_lastname2"
@@ -753,7 +751,6 @@ $emp_username = $_SESSION['emp_username'];
             $("#m_email").val(dataResult.m_email);
             $("#m_tel").val(dataResult.m_tel);
             $("#m_address").val(dataResult.m_address);
-            $("#show_username").val(dataResult.m_username);
           }
         }
       });
@@ -919,7 +916,6 @@ $emp_username = $_SESSION['emp_username'];
     $(document).ready(function () {
       $('#butsave').on('click', function () {
 
-        var m_username = $('#m_username2').val();
         var m_password = $('#m_password2').val();
         var m_firstname = $('#m_firstname2').val();
         var m_lastname = $('#m_lastname2').val();
@@ -927,7 +923,7 @@ $emp_username = $_SESSION['emp_username'];
         var m_address = $('#m_address2').val();
         var m_tel = $('#m_tel2').val();
 
-        if (m_username != "" && m_password != "" && m_firstname != "" && m_lastname != "" && m_email != "" && m_address != "" && m_tel != "") {
+        if ( m_password != "" && m_firstname != "" && m_lastname != "" && m_email != "" && m_address != "" && m_tel != "") {
           
           if (!validateEmail(m_email)) {
             Swal.fire({
@@ -940,7 +936,6 @@ $emp_username = $_SESSION['emp_username'];
               url: "save_register.php",
               type: "POST",
               data: {
-                m_username: m_username,
                 m_password: m_password,
                 m_firstname: m_firstname,
                 m_lastname: m_lastname,

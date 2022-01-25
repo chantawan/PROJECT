@@ -6,7 +6,8 @@ if(!isset($_SESSION['m_id'])){
 }
 
 $m_id = $_SESSION['m_id'];
-$m_username = $_SESSION['m_username'];
+$m_firstname = $_SESSION['m_firstname'];
+$Position_name = $_SESSION['Position_name'];
 
 date_default_timezone_set("Asia/Bangkok");
 
@@ -102,15 +103,16 @@ date_default_timezone_set("Asia/Bangkok");
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-link" aria-current="page" href="page_booking.php">จองสนาม</a>
-          <a class="nav-link" href="history_booking.php">ประวัติการจอง</a>
-          <a class="nav-link" href="history_topup.php">ประวัติการเติมCoin</a>
-          <a class="nav-link" href="edit_profile.php">แก้ไขข้อมูลส่วนตัว</a>
-          <a class="nav-link" href="contact.php">ติดต่อ</a>     
+          <a class="nav-link" aria-current="page" href="page_booking.php">หน้าแรก</a>
+          <a class="nav-link" href="history_booking.php">เอกสารถึงตัวท่าน</a>
+          <a class="nav-link" href="history_topup.php">แฟ้มเอกสาร</a>
+          <a class="nav-link" href="edit_profile.php">คู่มือ</a>
+          <a class="nav-link" href="logout.php?option=2">ออกจากระบบ</a>     
         </div>   
       </div>
       <div style="text-align:right; float:right;">
-        <label style="color:#FFFFFF83">ชื่อผู้ใช้ : <?php echo $m_username ?> &nbsp</label><img src="img/logout.png" width="4%"><a href="logout.php?option=2"style="text-decoration:none; color:white;"> Logout </a>
+        <label style="color:#FFFFFF83">ชื่อผู้ใช้ : <?php echo $m_firstname ?> &nbsp</label>
+        <label style="color:#FFFFFF83">บทบาท : <?php echo $Position_name ?> &nbsp</label>
       </div>
     </div>
   </nav>

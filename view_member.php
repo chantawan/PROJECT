@@ -12,7 +12,6 @@
 			<td><?=$row['m_email'];?></td>
 			<td><?=$row['m_tel'];?></td>
 			<td><?=$row['m_address'];?></td>
-            <td><?=$row['m_username'];?></td>
 			<td><?=$row['emp_id'];?></td>
             <td style="width:10%;"> <!-- Button trigger modal -->
 			<button onclick="OnEdit(<?=$row['m_id'];?>)" type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">แก้ไข</button>

@@ -54,7 +54,7 @@
                             <div class="col-md-6"><br>
                                <center><h4>ยินดีต้อนรับ</h4></center><br>
                                 <div class="mb-3 mx-auto" style="width:70%" >
-                                    <center><input type="text" class="form-control" id="m_username" name="m_username" placeholder="ชื่อผู้ใช้" required></center>
+                                    <center><input type="text" class="form-control" id="m_firstname" name="m_firstname" placeholder="ชื่อผู้ใช้" required></center>
                                 </div>
                                 <div class="mb-3 mx-auto" style="width:70%">
                                     <center><input type="password" class="form-control" id="m_password" name="m_password" placeholder="รหัสผ่าน" required></center>
@@ -74,15 +74,15 @@
     <script>
         $(document).ready(function(){
             $("#but_submit").on('click',function(){
-                var m_username = $("#m_username").val();
+                var m_firstname = $("#m_firstname").val();
                 var m_password = $("#m_password").val();
 
-                if( m_username != "" && m_password != "" ){
+                if( m_firstname != "" && m_password != "" ){
                     $.ajax({
                         url:'checkUser.php',
                         type:'post',
                         data:{
-                            m_username: m_username,
+                            m_firstname: m_firstname,
                             m_password: m_password
                         },
                         success: function(dataResult) {
