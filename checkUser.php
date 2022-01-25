@@ -20,7 +20,10 @@ $m_password = $_POST['m_password'];
         $_SESSION['m_firstname'] = $m_firstname;
         echo json_encode(array("statusCode"=>200));
         
-    }else{
+    }else if(){
+        
+    }
+    else{
     
         echo json_encode(array("statusCode"=>201));
     

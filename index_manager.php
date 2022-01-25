@@ -1,0 +1,172 @@
+<?php
+include "connect.php";
+
+if(!isset($_SESSION['m_id'])){
+   header('Location: login_user.php');
+}
+
+$m_id = $_SESSION['m_id'];
+$m_firstname = $_SESSION['m_firstname'];
+$Position_name = $_SESSION['Position_name'];
+
+date_default_timezone_set("Asia/Bangkok");
+
+?>
+<!doctype html>
+<html>
+
+<head>
+  <link rel="icon" href="img/logo.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/jquery-3.5.1.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      font-family: 'supermarket';
+    }
+
+    body {
+      background-image: url('img/blackgroup.jpg');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-attachment: fixed;
+      background-size: 100% 100%, auto;
+    }
+    .clear {
+      clear: both;
+    }
+    #show_table{
+      /* background-color: rgba(255,255,255,0.4); */
+    }
+    #show_about{
+      background-color: rgba(0,0,0 ,0.5);
+    }
+    #show_2{
+      background-image: url('img/paper.png');
+      background-repeat: no-repeat;
+      background-position: left left;
+      /* background-attachment: fixed; */
+      background-size: 70% 70%, auto;
+      height:500px;
+      padding-top:100px;
+      padding-left:150px;
+      font-size:180px;
+      -webkit-text-stroke: 2px white;
+    }
+    .navbar{
+      position:fixed;
+      width:100%;
+      z-index:1;
+    }
+    .test{
+      background-image: url('img/paper.png');
+      background-repeat: no-repeat;
+      background-position: center center;
+      /* background-attachment: fixed; */
+      background-size: 80% 80%, auto;
+      height:500px;
+      padding-top:100px;
+      padding-left:150px;
+      font-size:180px;
+      -webkit-text-stroke: 2px white;
+    }
+    #i-stadium{
+      z-index:1;
+    }
+    .shadowx{
+      box-shadow:  8px 8px rgba(0, 0, 0, 0.25);
+      border:2px solid #F3E3D9;
+    }
+    .bgcon2{
+        background-color: rgba(255,255,255,0.7);
+        box-shadow: 0 0px 10px 0 rgb(0,0,0);
+    }
+
+  </style>
+  <title>หน้าแรก</title>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="width:100%">
+    <div class="container-fluid">
+      <img src="img/football.png"  width="2%" alt=""><a class="navbar-brand" href="index_user.php"> &nbsp</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link" aria-current="page" href="page_booking.php">หน้าแรก</a>
+          <a class="nav-link" href="history_booking.php">เอกสารถึงตัวท่าน</a>
+          <a class="nav-link" href="history_topup.php">แฟ้มเอกสาร</a>
+          <a class="nav-link" href="edit_profile.php">คู่มือ</a>
+          <a class="nav-link" href="logout.php?option=2">ออกจากระบบ</a>     
+        </div>   
+      </div>
+      <div style="text-align:right; float:right;">
+        <label style="color:#FFFFFF83">ชื่อผู้ใช้ : <?php echo $m_firstname ?> &nbsp</label>
+        <label style="color:#FFFFFF83">บทบาท : <?php echo $Position_name ?> &nbsp</label>
+      </div>
+    </div>
+  </nav>
+
+  <div>
+    
+    <div id="show_table"><br>
+      <center><img src="img/h1.gif" style="width:20%"></center>
+      <br>
+    <br>
+    </div>
+
+    <div class="row mx-auto" id="show_about">
+      <br>
+      <div class="col-2 mb-5"><br> <br><br>
+      <h3 style="transform: rotate(-90deg); color:white;"><hr style="color:white">เกี่ยวกับเรา</h3>
+      </div>
+      <div class="col-5 mb-5" style="padding-right:0px;" ><br> <br>
+        <img src="img/Computer.png" width="85%" class="shadowx">
+      </div>
+      <div class="col-5 mb-5" style="color:white; font-size:20px; padding-left:0px;"><br><br>
+        
+      ระบบสารบรรณอิเล็กทรอนิกส์ สำหรับหน่วยงานภาครัฐ <br>
+      ระบบให้บริการรับส่ง หนังสือ จัดเก็บเอกสาร เพื่อส่งต่อ<br>
+      สั่งการและลงนามในเอกสารหรือส่งเข้าระบบหนังสือเวียน<br>
+      ที่มีการลงนาม รับทราบ ผ่านระบบด้วยวิธีการทาง<br>
+      อิเล็กทรอนิกส์ สามารถจำกัดสิทธิ์ในการเข้าถึงเอกสาร<br>
+      รองรับการปฏิบัติงานของผู้ใช้งานได้พร้อมๆ กัน<br>
+    </div>
+    </div>
+    <div class="col-10 mb-10" id="show_2" align="right">
+    <h3 class="text-dark"><br><br><br><br><br>ประวัติการจัดตั้งเทศบาล</h3>
+    <h3 class="text-dark">การจัดตั้งเทศบาลเมืองปัตตานีในเริ่มแรกได้รวมตำบล<br>
+                          อันเป็นที่ตั้งศาลากลางจังหวัดปัตตานีจำนวน 3 ตำบล<br>
+                          ได้แก่ ตำบลสะบารัง ตำบลอาเนาะรู และตำบลจะบังติกอตราพระราชกฤษฎีกา
+                          จัดตั้งเป็นเทศบาลเมืองปัตตานีเมื่อพุทธศักราช 2478 โดยอาศัยอำนาจแห่งพระราชบัญญัติจัดระเบียบเทศบาลพุทธศักราช 2476</h3><br>
+      <div class="col-6 mb-4 mx-auto"><br><br>
+      </div>
+    </div>
+    
+    <div class="row mx-auto" id="show_about">
+    <h2 class="text-white" style="padding-left:150px"><br><img src="img/logo.png" width="10%" alt=""> เทศบาลเมืองปัตตานี
+ถนนเดชา ตำบลสะบารัง อำเภอเมือง จังหวัดปัตตานี 94000</h2>
+      <div class="col-8 mb-5 mx-auto"><br>
+
+        <p class="text-white" style="font-size:20px;">
+        <img src="img/phone.png" width="5%" alt=""> โทร. 073-335918<br><br>
+        <img src="img/phone.png" width="5%" alt=""> โทรสาร 073-335919<br><br>
+        <img src="img/registration.jpg" width="5%" alt=""> saraban@patta<br>
+      </div>
+      
+    </div>
+
+  </div> 
+</body>
+
+</html>

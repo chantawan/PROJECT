@@ -15,7 +15,6 @@ if ($emp_username != "" && $emp_password != ""){
 
     if($num_row == 1){
         $row = mysqli_fetch_array($result);
-
         $emp_id = $row['emp_id'];
         $Position_name = $row['Position_name'];
         $_SESSION['emp_id'] = $emp_id;
