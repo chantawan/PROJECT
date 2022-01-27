@@ -76,9 +76,6 @@ date_default_timezone_set("Asia/Bangkok");
       font-size:180px;
       -webkit-text-stroke: 2px white;
     }
-    #i-stadium{
-      z-index:1;
-    }
     .shadowx{
       box-shadow:  8px 8px rgba(0, 0, 0, 0.25);
       border:2px solid #F3E3D9;
@@ -112,7 +109,7 @@ date_default_timezone_set("Asia/Bangkok");
       </div>
       <div style="text-align:right; float:right;">
         <label style="color:#FFFFFF83">ชื่อผู้ใช้ : <?php echo $emp_firstname ?> &nbsp</label>
-        <label style="color:#FFFFFF83">บทบาท : <?php echo $Position_name ?> &nbsp</label>
+        <label style="color:#FFFFFF83">สถานะ : <?php echo $Position_name ?> &nbsp</label>
       </div>
     </div>
   </nav>

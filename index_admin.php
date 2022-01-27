@@ -167,7 +167,7 @@ $Position_name = $_SESSION['Position_name'];
                   
             <div class="col-md-6" style="text-align:right;">
             <label style="color:#FFFFFF83">ชื่อผู้ใช้ : <?php echo $emp_firstname ?> &nbsp</label>
-            <label style="color:#FFFFFF83">บทบาท : <?php echo $Position_name ?> &nbsp</label>
+            <label style="color:#FFFFFF83">สถานะ : <?php echo $Position_name ?> &nbsp</label>
             </div>
           </div>
         </nav>
@@ -377,7 +377,7 @@ $Position_name = $_SESSION['Position_name'];
                     <th class="thcenter">นามสกุล</th>
                     <th class="thcenter">เลขบัตรประชาชน</th>
                     <th class="thcenter">เพศ</th>
-                    <th class="thcenter">บทบาท</th>
+                    <th class="thcenter">สถานะ</th>
                     <th class="thcenter">กอง</th>
                     <th class="thcenter">อีเมลล์</th>
                     <th class="thcenter">เบอร์โทรศัพท์</th>
