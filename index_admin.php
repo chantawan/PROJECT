@@ -208,7 +208,7 @@ $Position_name = $_SESSION['Position_name'];
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <input type="hidden" id="divistion_id">
+                  <input type="hidden" id="emp_id">
                   <div class="row">
                     <div class="col-md-6">
                       <div class="mb-3">
@@ -319,7 +319,7 @@ $Position_name = $_SESSION['Position_name'];
             </center>
 
             <div class="table-responsive-sm">
-              <img src="img/11.png" alt="">
+              <img src="img/11.jpg" alt="">
             </div>
           </div>
 
@@ -394,51 +394,113 @@ $Position_name = $_SESSION['Position_name'];
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <input type="hidden" id="m_id">
+                  <input type="hidden" id="emp_id">
                   <div class="row">
                     <div class="col-md-6">
                       <div class="mb-3">
-                        <input type="text" class="form-control" name="m_firstname" id="m_firstname"
+                        <input type="text" class="form-control" name="emp_firstname" id="emp_firstname"
                           placeholder="ชื่อจริง">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="mb-3">
-                        <input type="text" class="form-control" name="m_lastname" id="m_lastname"
+                        <input type="text" class="form-control" name="emp_lastname" id="emp_lastname"
                           placeholder="นามสกุล">
                       </div>
                     </div>
-                  </div>
+                  <div class="col-md-6">
+                      <div class="mb-3">
+                        <input type="password" class="form-control" name="emp_password" id="emp_password"
+                          placeholder="รหัสผ่าน">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <input type="number" class="form-control" name="emp_cardid" id="emp_cardid"
+                          placeholder="เลขบัตรประชาชน 13 หลัก">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                      <?php
+                          $sql = "SELECT * from gender";
+
+                          $result = mysqli_query($conn,$sql);
+                        ?>
+                        <select name="gender_id" id="gender_id" class="form-select">
+                          <option value="เพศ">เพศ</option>
+                        <?php
+                          while($row = mysqli_fetch_assoc($result)){
+                        ?>
+                              <option value="<?php echo $row["gender_id"]?>"><?php echo $row["gender_name"]?></option>              
+                            <?php
+                          }
+                        ?>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                      <?php
+                          $sql = "SELECT * from position";
+
+                          $result = mysqli_query($conn,$sql);
+                        ?>
+                        <select name="Position_id" id="Position_id" class="form-select">
+                          <option value="ตำแหน่ง">ตำแหน่งงาน</option>
+                        <?php
+                          while($row = mysqli_fetch_assoc($result)){
+                        ?>
+                              <option value="<?php echo $row["Position_id"]?>"><?php echo $row["Position_name"]?></option>              
+                            <?php
+                          }
+                        ?>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                      <?php
+                          $sql = "SELECT * from divistion";
+
+                          $result = mysqli_query($conn,$sql);
+                        ?>
+                        <select name="divistion_id" id="divistion_id" class="form-select">
+                          <option value="กอง">กอง</option>
+                        <?php
+                          while($row = mysqli_fetch_assoc($result)){
+                        ?>
+                              <option value="<?php echo $row["divistion_id"]?>"><?php echo $row["divistion_name"]?></option>              
+                            <?php
+                          }
+                        ?>
+                        </select>
+                      </div>
+                    </div>
                   <div class="row">
                     <div class="col-md-7">
                       <div class="mb-3">
-                        <input type="email" class="form-control" name="m_email" id="m_email"
+                        <input type="email" class="form-control" name="emp_email" id="emp_email"
                           placeholder="ที่อยู่อีเมล">
                       </div>
                     </div>
                     <div class="col-md-5">
                       <div class="mb-3">
-                      <input type="text" class="form-control" name="m_tel" id="m_tel" placeholder="เบอร์โทรศัพท์" onKeyUp="if(isNaN(this.value)){ Swal.fire({ icon: 'error', title: 'กรุณากรอกตัวเลข', }); this.value='';}"  required />
+                      <input type="text" class="form-control" name="emp_tel" id="emp_tel" placeholder="เบอร์โทรศัพท์" onKeyUp="if(isNaN(this.value)){ Swal.fire({ icon: 'error', title: 'กรุณากรอกตัวเลข', }); this.value='';}"  required />
                       </div>
                     </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="mb-3">
-                        <textarea class="form-control" name="m_address" id="m_address" cols="30" rows="3" style=""
-                          placeholder="ที่อยู่"></textarea>
-                      </div>
-                    </div>
-                  </div>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="clear_modal">ปิด</button>
                   <button type="button" class="btn btn-success" id="save_edit">บันทึก</button>
-                </div>
+                  </div>
               </div>
             </div>
-          </div>
-
+          </div>     
+        </div>
+      </div>
+    </div>
+  </div>
           <!-- modal register -->
           <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -554,7 +616,6 @@ $Position_name = $_SESSION['Position_name'];
                 </div>
               </div>
             </div>
-          
           </div>     
         </div>
       </div>
@@ -639,7 +700,7 @@ $Position_name = $_SESSION['Position_name'];
       $("#show_history").hide();
 
       $.ajax({
-        url: "view_member.php",
+        url: "view_employee.php",
         type: "POST",
         cache: false,
         success: function (data) {
@@ -670,10 +731,10 @@ $Position_name = $_SESSION['Position_name'];
       }).then((result) => {
         if (result.isConfirmed) {
           $.ajax({
-            url: "delete_member.php",
+            url: "delete_employee.php",
             type: 'post',
             data: {
-              m_id: id
+              emp_id: id
             },
             success: function (dataResult) {
               var dataResult = JSON.parse(dataResult);
@@ -688,7 +749,7 @@ $Position_name = $_SESSION['Position_name'];
               else{
                 Swal.fire({
                   icon: 'error',
-                  title: 'ไม่สามารถลบสมาชิกที่มีการจองได้'
+                  title: 'ไม่สามารถลบสมาชิกได้'
                 })
               }
             }
@@ -699,21 +760,26 @@ $Position_name = $_SESSION['Position_name'];
 
     function OnEdit(id) {
       $.ajax({
-        url: "select_member.php",
+        url: "select_employee.php",
         type: 'post',
         data: {
-          m_id: id
+          emp_id: id
         },
         success: function (dataResult) {
           var dataResult = JSON.parse(dataResult);
           if (dataResult.statusCode == 200) {
 
-            $("#m_id").val(dataResult.m_id);
-            $("#m_firstname").val(dataResult.m_firstname);
-            $("#m_lastname").val(dataResult.m_lastname);
-            $("#m_email").val(dataResult.m_email);
-            $("#m_tel").val(dataResult.m_tel);
-            $("#m_address").val(dataResult.m_address);
+            $("#emp_id").val(dataResult.emp_id);
+            $("#emp_firstname").val(dataResult.emp_firstname);
+            $("#emp_lastname").val(dataResult.emp_lastname);
+            $("#emp_password").val(dataResult.emp_password);
+            $("#emp_cardid").val(dataResult.emp_cardid);
+            $("#gender_id").val(dataResult.gender_id);
+            $("#Position_id").val(dataResult.Position_id);
+            $("#divistion_id").val(dataResult.divistion_id);
+            $("#emp_tel").val(dataResult.emp_tel);
+            $("#emp_email").val(dataResult.emp_email);
+            $("#show_username").val(dataResult.emp_firstname);
           }
         }
       });
@@ -783,7 +849,7 @@ $Position_name = $_SESSION['Position_name'];
 
             $("#divistion_id").val(dataResult.divistion_id);
             $("#divistion_name").val(dataResult.divistion_name);
-            $("#type_id").val(dataResult.type_id);
+            $("#divistion_number").val(dataResult.divistion_number);
           }
         }
       });
@@ -792,25 +858,41 @@ $Position_name = $_SESSION['Position_name'];
     $(document).ready(function () {
       $("#save_edit").on('click', function () {
 
-        var m_id = $("#m_id").val();
-        var m_firstname = $("#m_firstname").val();
-        var m_lastname = $("#m_lastname").val();
-        var m_email = $("#m_email").val();
-        var m_tel = $("#m_tel").val();
-        var m_address = $("#m_address").val();
+        var emp_id = $("#emp_id").val();
+        var emp_firstname = $("#emp_firstname").val();
+        var emp_lastname = $("#emp_lastname").val();
+        var emp_password = $("#emp_password").val();
+        var emp_cardid = $("#emp_cardid").val();
+        var gender_id = $("#gender_id").val();
+        var Position_id = $("#Position_id").val();
+        var divistion_id = $("#divistion_id").val();
+        var emp_email = $("#emp_email").val();
+        var emp_tel = $("#emp_tel").val();
         var show_username = $("#show_username").val();
-
+        if ( emp_firstname != "" && emp_lastname != "" && emp_password != "" && emp_cardid != "" && gender_id != "" && Position_id != ""&& divistion_id != "" && emp_email != "" && emp_tel != "") {
+          
+          if (!validateEmail(emp_email)) {
+            Swal.fire({
+              icon: 'error',
+              title: 'กรุณากรอกอีเมลให้ถูกต้อง',
+            })
+          }
+          else{
         $.ajax({
-          url: 'update_member.php',
+          url: 'update_employee.php',
           method: 'post',
           datatype: 'JSON',
           data: {
-            m_id: m_id,
-            m_firstname: m_firstname,
-            m_lastname: m_lastname,
-            m_email: m_email,
-            m_tel: m_tel,
-            m_address: m_address,
+                emp_id: emp_id,
+                emp_firstname: emp_firstname,
+                emp_lastname: emp_lastname,
+                emp_password: emp_password,
+                emp_cardid:emp_cardid,
+                gender_id,gender_id,
+                Position_id:Position_id,
+                divistion_id:divistion_id,
+                emp_email: emp_email,
+                emp_tel: emp_tel
           },
           success: function (dataResult) {
             var dataResult = JSON.parse(dataResult);
@@ -821,21 +903,38 @@ $Position_name = $_SESSION['Position_name'];
                 title: 'แก้ไขข้อมูลสำเร็จ'
               })
               $('#exampleModal').modal('hide');
+              $('#exampleModal').find('input[type=text], input[type=password], input[type=number], input[type=tel], input[type=email], textarea').val('');
             } 
-            else if (dataResult.statusCode == 202) {
-                  Swal.fire({
-                      icon: 'error',
-                      title: 'มีอีเมลนี้แล้ว',
-                  })
+            else if (dataResult.statusCode == 201) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'มีชื่อผู้ใช้นี้แล้ว',
+                    })
+                }
+                else if (dataResult.statusCode == 202) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'มีอีเมลนี้แล้ว',
+                    })
+                }
+                else if (dataResult.statusCode == 203) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'มีเบอร์โทรนี้แล้ว',
+                    })
+                }else if (dataResult.statusCode == 204) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'มีเลขบัตรประชาชนนี้อยู่แล้ว',
+                    })
+                }
               }
-            else if (dataResult.statusCode == 203) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'มีเบอร์โทรนี้แล้ว',
-                })
-            }
+            });
           }
-        });
+        }
+        else {
+          Swal.fire('กรุณากรอกข้อมูลให้ครบ');
+        }
       });
     });
 
