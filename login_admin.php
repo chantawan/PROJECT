@@ -45,7 +45,7 @@
     <div class="container mt-4">
         <div class="row">
             <div class="col-md-12">
-            <center><h2 class="tshadow animate__animated animate__zoomIn">สำนักงานเทศบาลเมืองปัตตานี <img src="img/logo.png" width="3%" alt=""></h2></center><br>
+            <center><h2 class="tshadow animate__animated animate__backInDown">สำนักงานเทศบาลเมืองปัตตานี <img src="img/logo.png" width="3%" alt=""></h2></center><br>
                 <div class="card mx-auto animate__animated animate__fadeIn animate__delay-1s"  style="width:70%">
                     <div class="card-body">
                         <div class="row">
@@ -105,5 +105,6 @@
             });
         });
     </script>
+    
 </body>
 </html>

@@ -2,11 +2,11 @@
 	include 'connect.php';
 
 	$divistion_id=$_POST['divistion_id'];
-	$stadium_name=$_POST['stadium_name'];
+	$divistion_name=$_POST['divistion_name'];
 	$divistion_number=$_POST['divistion_number'];
 
 	$sql_query = "UPDATE `divistion` 
-	SET `stadium_name`='$stadium_name',
+	SET `divistion_name`='$divistion_name',
 	`divistion_number`='$divistion_number'
 
      WHERE divistion_id = $divistion_id";

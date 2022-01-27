@@ -9,10 +9,10 @@ if ($emp_firstname != "" && $emp_password != ""){
 
     $sql_query = "SELECT a.emp_id , a.emp_firstname , a.Position_id , b.Position_name from employee a 
     JOIN position b ON a.Position_id = b.Position_id
-    where a.emp_firstname = '$emp_firstname' and a.emp_password = '$emp_password' and a.Position_id < 4";
+    where a.emp_firstname = '$emp_firstname' and a.emp_password = '$emp_password'";
     $result = mysqli_query($conn,$sql_query);
     $num_row = mysqli_num_rows($result);
-
+    
     if($num_row == 1){
         $row = mysqli_fetch_array($result);
         $emp_id = $row['emp_id'];
@@ -20,11 +20,25 @@ if ($emp_firstname != "" && $emp_password != ""){
         $_SESSION['emp_id'] = $emp_id;
         $_SESSION['emp_firstname'] = $emp_firstname;
         $_SESSION['Position_name'] = $Position_name;
-        echo json_encode(array("statusCode"=>200));
-    
-    }else{
+
+        $position_id = $row['Position_id'];
         
-        echo json_encode(array("statusCode"=>201));
+        if($position_id == 1){
+            echo json_encode(array("positionId"=>1));
+        }
+        else if($position_id == 2){
+            echo json_encode(array("positionId"=>2));
+        }
+        else if($position_id == 3){
+            echo json_encode(array("positionId"=>3));
+        }
+        else{
+            echo json_encode(array("statusCode"=>202));
+        }
+    }
+    else{
+        
+        echo json_encode(array("statusCode"=>202));
     
     }
 }

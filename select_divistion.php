@@ -9,7 +9,7 @@
 
     $data = array(
         "divistion_id" => $row['divistion_id'],
-        "stadium_name" => $row['stadium_name'],
+        "divistion_name" => $row['divistion_name'],
         "divistion_number" => $row['divistion_number'],
         "statusCode"=>200
     );

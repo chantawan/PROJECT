@@ -212,7 +212,7 @@ $Position_name = $_SESSION['Position_name'];
                   <div class="row">
                     <div class="col-md-6">
                       <div class="mb-3">
-                        <input type="text" class="form-control" name="stadium_name" id="stadium_name"
+                        <input type="text" class="form-control" name="divistion_name" id="divistion_name"
                           placeholder="ชื่อสนาม">
                       </div>
                     </div>
@@ -245,7 +245,7 @@ $Position_name = $_SESSION['Position_name'];
                   <div class="row">
                     <div class="col-md-6">
                       <div class="mb-3">
-                        <input type="text" class="form-control" name="stadium_name" id="stadium_name2"
+                        <input type="text" class="form-control" name="divistion_name" id="divistion_name2"
                           placeholder="ชื่อกอง">
                       </div>
                     </div>
@@ -366,13 +366,12 @@ $Position_name = $_SESSION['Position_name'];
                   <th class="thcenter">รหัสพนักงาน</th>
                     <th class="thcenter">ชื่อจริง</th>
                     <th class="thcenter">นามสกุล</th>
-                    <th class="thcenter">เพศ</th>
-                    <th class="thcenter">อีเมลล์</th>
                     <th class="thcenter">เลขบัตรประชาชน</th>
-                    <th class="thcenter">เบอร์โทรศัพท์</th>
-                    <th class="thcenter">กอง</th>
+                    <th class="thcenter">เพศ</th>
                     <th class="thcenter">บทบาท</th>
-                    <th class="thcenter">ชื่อเจ้าหน้าที่</th>
+                    <th class="thcenter">กอง</th>
+                    <th class="thcenter">อีเมลล์</th>
+                    <th class="thcenter">เบอร์โทรศัพท์</th>
                     <th class="thcenter">แก้ไข/ลบ</th>                
                   </tr>
                 </thead>
@@ -450,43 +449,47 @@ $Position_name = $_SESSION['Position_name'];
                 </div>
                 <div class="modal-body">
                   <div class="row">
-                  <div class="col-md-6">
-                      <div class="mb-3">
-                        <input type="text" class="form-control" name="emp_id" id="m_firstname2"
-                          placeholder="รหัสพนักงาน">
-                      </div>
-                    </div>
                     <div class="col-md-6">
                       <div class="mb-3">
-                        <input type="text" class="form-control" name="emp_firstname" id="m_firstname2"
+                        <input type="text" class="form-control" name="emp_firstname" id="emp_firstname2"
                           placeholder="ชื่อจริง">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="mb-3">
-                        <input type="text" class="form-control" name="emp_lastname" id="m_lastname2"
+                        <input type="text" class="form-control" name="emp_lastname" id="emp_lastname2"
                           placeholder="นามสกุล">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="mb-3">
-                        <input type="password" class="form-control" name="emp_password" id="m_password2"
+                        <input type="password" class="form-control" name="emp_password" id="emp_password2"
                           placeholder="รหัสผ่าน">
                       </div>
                     </div>
                   <div class="col-md-6">
                       <div class="mb-3">
-                        <input type="number" class="form-control" name="emp_lastname" id="m_lastname2"
+                        <input type="number" class="form-control" name="emp_cardid" id="emp_cardid2"
                           placeholder="เลขบัตรประชาชน 13 หลัก">
                       </div>
                     </div>
                   
-                  <div class="col-md-3">
+                    <div class="col-md-6">
                       <div class="mb-3">
-                        <select name="Sex" id="Sex" class="form-select">
-                        <option value="none">เพศ</option>
-                          <option value="1">ชาย</option>
-                          <option value="2">หญิง</option>
+                      <?php
+                          $sql = "SELECT * from gender";
+
+                          $result = mysqli_query($conn,$sql);
+                        ?>
+                        <select name="gender_id" id="gender_id2" class="form-select">
+                          <option value="เพศ">เพศ</option>
+                        <?php
+                          while($row = mysqli_fetch_assoc($result)){
+                        ?>
+                              <option value="<?php echo $row["gender_id"]?>"><?php echo $row["gender_name"]?></option>              
+                            <?php
+                          }
+                        ?>
                         </select>
                       </div>
                     </div>
@@ -498,7 +501,7 @@ $Position_name = $_SESSION['Position_name'];
 
                           $result = mysqli_query($conn,$sql);
                         ?>
-                        <select name="Position_id" id="Position_id" class="form-select">
+                        <select name="Position_id" id="Position_id2" class="form-select">
                           <option value="ตำแหน่ง">ตำแหน่งงาน</option>
                         <?php
                           while($row = mysqli_fetch_assoc($result)){
@@ -510,27 +513,40 @@ $Position_name = $_SESSION['Position_name'];
                         </select>
                       </div>
                     </div>
-                  
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                      <?php
+                          $sql = "SELECT * from divistion";
+
+                          $result = mysqli_query($conn,$sql);
+                        ?>
+                        <select name="divistion_id" id="divistion_id2" class="form-select">
+                          <option value="กอง">กอง</option>
+                        <?php
+                          while($row = mysqli_fetch_assoc($result)){
+                        ?>
+                              <option value="<?php echo $row["divistion_id"]?>"><?php echo $row["divistion_name"]?></option>              
+                            <?php
+                          }
+                        ?>
+                        </select>
+                      </div>
+                    </div>
                   <div class="row">
                     <div class="col-md-6">
                       <div class="mb-3">
-                        <input type="email" class="form-control" name="m_email" id="m_email2"
+                        <input type="email" class="form-control" name="emp_email" id="emp_email2"
                           placeholder="ที่อยู่อีเมล">
                       </div>
                     </div>
                     <div class="col-md-5">
                       <div class="mb-3">
-                      <input type="text" class="form-control" name="m_tel" id="m_tel2" placeholder="เบอร์โทรศัพท์" onKeyUp="if(isNaN(this.value)){ Swal.fire({ icon: 'error', title: 'กรุณากรอกตัวเลข', }); this.value='';}"  required />
+                      <input type="text" class="form-control" name="emp_tel" id="emp_tel2" placeholder="เบอร์โทรศัพท์" onKeyUp="if(isNaN(this.value)){ Swal.fire({ icon: 'error', title: 'กรุณากรอกตัวเลข', }); this.value='';}"  required />
                       </div>
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="mb-3">
-                        <textarea class="form-control" name="m_address" id="m_address2" cols="30" rows="3" style=""
-                          placeholder="ที่อยู่"></textarea>
-                      </div>
-                    </div>
+                  
+                  
                   
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="clear_modal2">ปิด</button>
@@ -593,23 +609,7 @@ $Position_name = $_SESSION['Position_name'];
       });
     }
 
-    function show_topup() {
-
-      $("#show_topup").show();
-      $("#show_index").hide();
-      $("#show_divistion").hide();
-      $("#show_member").hide();
-      $("#show_history").hide();
-
-      $.ajax({
-        url: "view_topup.php",
-        type: "POST",
-        cache: false,
-        success: function (data) {
-          $('#myTable3').html(data);
-        }
-      });
-    }
+    
 
     function show_divistion() {
 
@@ -772,7 +772,7 @@ $Position_name = $_SESSION['Position_name'];
 
     function OnEdit2(id) {
       $.ajax({
-        url: "select_stadium.php",
+        url: "select_divistion.php",
         type: 'post',
         data: {
           divistion_id: id
@@ -782,7 +782,7 @@ $Position_name = $_SESSION['Position_name'];
           if (dataResult.statusCode == 200) {
 
             $("#divistion_id").val(dataResult.divistion_id);
-            $("#stadium_name").val(dataResult.stadium_name);
+            $("#divistion_name").val(dataResult.divistion_name);
             $("#type_id").val(dataResult.type_id);
           }
         }
@@ -843,7 +843,7 @@ $Position_name = $_SESSION['Position_name'];
       $("#save_edit_divistion").on('click', function () {
 
         var divistion_id = $("#divistion_id").val();
-        var stadium_name = $("#stadium_name").val();
+        var divistion_name = $("#divistion_name").val();
         var divistion_number = $("#divistion_number").val();
 
         $.ajax({
@@ -852,7 +852,7 @@ $Position_name = $_SESSION['Position_name'];
           datatype: 'JSON',
           data: {
             divistion_id: divistion_id,
-            stadium_name: stadium_name,
+            divistion_name: divistion_name,
             divistion_number: divistion_number
           },
           success: function (dataResult) {
@@ -878,17 +878,19 @@ $Position_name = $_SESSION['Position_name'];
 
     $(document).ready(function () {
       $('#butsave').on('click', function () {
+        var emp_firstname = $('#emp_firstname2').val();
+        var emp_lastname = $('#emp_lastname2').val();
+        var emp_password = $('#emp_password2').val();
+        var emp_cardid = $('#emp_cardid2').val();
+        var gender_id = $('#gender_id2').val();
+        var Position_id = $('#Position_id2').val();
+        var divistion_id = $('#divistion_id2').val();
+        var emp_email = $('#emp_email2').val();
+        var emp_tel = $('#emp_tel2').val();
 
-        var m_password = $('#m_password2').val();
-        var m_firstname = $('#m_firstname2').val();
-        var m_lastname = $('#m_lastname2').val();
-        var m_email = $('#m_email2').val();
-        var m_address = $('#m_address2').val();
-        var m_tel = $('#m_tel2').val();
-
-        if ( m_password != "" && m_firstname != "" && m_lastname != "" && m_email != "" && m_address != "" && m_tel != "") {
+        if ( emp_firstname != "" && emp_lastname != "" && emp_password != "" && emp_cardid != "" && gender_id != "" && Position_id != ""&& divistion_id != "" && emp_email != "" && emp_tel != "") {
           
-          if (!validateEmail(m_email)) {
+          if (!validateEmail(emp_email)) {
             Swal.fire({
               icon: 'error',
               title: 'กรุณากรอกอีเมลให้ถูกต้อง',
@@ -899,12 +901,15 @@ $Position_name = $_SESSION['Position_name'];
               url: "save_register.php",
               type: "POST",
               data: {
-                m_password: m_password,
-                m_firstname: m_firstname,
-                m_lastname: m_lastname,
-                m_email: m_email,
-                m_address: m_address,
-                m_tel: m_tel
+                emp_firstname: emp_firstname,
+                emp_lastname: emp_lastname,
+                emp_password: emp_password,
+                emp_cardid:emp_cardid,
+                gender_id,gender_id,
+                Position_id:Position_id,
+                divistion_id:divistion_id,
+                emp_email: emp_email,
+                emp_tel: emp_tel
               },
               cache: false,
               success: function (dataResult) {
@@ -935,6 +940,11 @@ $Position_name = $_SESSION['Position_name'];
                         icon: 'error',
                         title: 'มีเบอร์โทรนี้แล้ว',
                     })
+                }else if (dataResult.statusCode == 204) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'มีเลขบัตรประชาชนนี้อยู่แล้ว',
+                    })
                 }
               }
             });
@@ -949,15 +959,15 @@ $Position_name = $_SESSION['Position_name'];
     $(document).ready(function () {
       $('#butsave_divistion').on('click', function () {
 
-        var stadium_name = $('#stadium_name2').val();
+        var divistion_name = $('#divistion_name2').val();
         var divistion_number = $('#divistion_number2').val();
 
-        if (stadium_name != "" && divistion_number != "") {
+        if (divistion_name != "" && divistion_number != "") {
           $.ajax({
             url: "save_divistion.php",
             type: "POST",
             data: {
-              stadium_name: stadium_name,
+              divistion_name: divistion_name,
               divistion_number: divistion_number
             },
             cache: false,

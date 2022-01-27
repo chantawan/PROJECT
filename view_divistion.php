@@ -1,7 +1,7 @@
 <?php
 	include 'connect.php';
 	
-	$sql_query = "SELECT  divistion_id , stadium_name , divistion_number
+	$sql_query = "SELECT  divistion_id , divistion_name , divistion_number
     FROM divistion";
 
     $result = mysqli_query($conn,$sql_query);
@@ -12,7 +12,7 @@
     ?>	
 
         <tr>
-            <td><?=$row['stadium_name'];?></td>
+            <td><?=$row['divistion_name'];?></td>
             <td><?=$row['divistion_number'];?></td>
             <td style="width:10%;">
 			<button onclick="OnEdit2(<?=$row['divistion_id'];?>)" type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal4">แก้ไข</button>

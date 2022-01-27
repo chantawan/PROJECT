@@ -77,20 +77,30 @@
                 var emp_firstname = $("#emp_firstname").val();
                 var emp_password = $("#emp_password").val();
 
+                // console.log(emp_firstname)
+                // console.log(emp_password)
+
                 if( emp_firstname != "" && emp_password != "" ){
                     $.ajax({
                         url:'checkUser.php',
                         type:'post',
                         data:{
+
                             emp_firstname: emp_firstname,
                             emp_password: emp_password
                         },
                         success: function(dataResult) {
                             var dataResult = JSON.parse(dataResult);
-                            if (dataResult.statusCode == 200) {
-                                location.href = "index_user.php";
-                                
-                            }else if(dataResult.statusCode == 201){
+                            if (dataResult.positionId == 1) {
+                                location.href = "index_user.php";                         
+                            }
+                            else if(dataResult.positionId == 2){
+                                location.href = "index_manager.php";        
+                            }
+                            else if(dataResult.positionId == 3){
+                                location.href = "index_Secretary.php";        
+                            }
+                            else if(dataResult.statusCode == 202){
                                 Swal.fire({
                                     icon: 'error',
                                     title: 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง',

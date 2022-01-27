@@ -1,12 +1,12 @@
 <?php
 include "connect.php";
 
-if(!isset($_SESSION['m_id'])){
+if(!isset($_SESSION['emp_id'])){
    header('Location: login_user.php');
 }
 
-$m_id = $_SESSION['m_id'];
-$m_firstname = $_SESSION['m_firstname'];
+$m_id = $_SESSION['emp_id'];
+$emp_firstname = $_SESSION['emp_firstname'];
 $Position_name = $_SESSION['Position_name'];
 
 date_default_timezone_set("Asia/Bangkok");
@@ -103,15 +103,23 @@ date_default_timezone_set("Asia/Bangkok");
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-link" aria-current="page" href="page_booking.php">หน้าแรก</a>
-          <a class="nav-link" href="history_booking.php">เอกสารถึงตัวท่าน</a>
-          <a class="nav-link" href="history_topup.php">แฟ้มเอกสาร</a>
-          <a class="nav-link" href="edit_profile.php">คู่มือ</a>
+          <a class="nav-link" aria-current="page" href=".php">หน้าแรก</a>
+          <div class="dropdown">
+          <button class="btn  dropdown-toggle" style="width:100%; margin-bottom:3%; color:grey;" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+           เอกสารถึงตัวท่าน
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="">เอกสารรอดำเนินการ</a></li>
+            <li><a class="dropdown-item" href="#">ส่งข้อความ</a></li>
+          </ul>
+        </div>
+          <a class="nav-link" href=".php">แฟ้มเอกสาร</a>
+          <a class="nav-link" href=".php">คู่มือ</a>
           <a class="nav-link" href="logout.php?option=2">ออกจากระบบ</a>     
         </div>   
       </div>
       <div style="text-align:right; float:right;">
-        <label style="color:#FFFFFF83">ชื่อผู้ใช้ : <?php echo $m_firstname ?> &nbsp</label>
+        <label style="color:#FFFFFF83">ชื่อผู้ใช้ : <?php echo $emp_firstname ?> &nbsp</label>
         <label style="color:#FFFFFF83">บทบาท : <?php echo $Position_name ?> &nbsp</label>
       </div>
     </div>

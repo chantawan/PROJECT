@@ -2,28 +2,29 @@
 	include 'connect.php';
 
 	if(isset($_SESSION['emp_id'])){
-		$emp_username = $_SESSION['emp_username'];
+		$emp_firstname = $_SESSION['emp_firstname'];
 	}else{
 		echo json_encode(array("statusCode"=>201));
 	}
 	 
-	$m_password=$_POST['m_password'];
-	$m_firstname=$_POST['m_firstname'];
-	$m_lastname=$_POST['m_lastname'];
-    $m_email=$_POST['m_email'];
-	$m_address=$_POST['m_address'];
-	$m_tel=$_POST['m_tel'];
-	$m_tel=$_POST['m_tel'];
-	$m_tel=$_POST['m_tel'];
-	$m_tel=$_POST['m_tel'];
+	$emp_firstname=$_POST['emp_firstname'];
+	$emp_lastname=$_POST['emp_lastname'];
+	$emp_password=$_POST['emp_password'];
+	$emp_cardid=$_POST['emp_cardid'];
+	$gender_id=$_POST['gender_id'];
+	$Position_id=$_POST['Position_id'];
+	$divistion_id=$_POST['divistion_id'];
+    $emp_email=$_POST['emp_email'];
+	$emp_tel=$_POST['emp_tel'];
+	
 
-	$sql_query = "SELECT m_firstname from member where m_firstname = '$m_firstname'";
+	$sql_query = "SELECT emp_firstname from employee where emp_firstname = '$emp_firstname'";
     $result = mysqli_query($conn,$sql_query);
     $num_row = mysqli_num_rows($result);
 
     if($num_row == 0){
 		
-		$sql_query1 = "SELECT m_email from member where m_email = '$m_email'";
+		$sql_query1 = "SELECT emp_email from employee where emp_email = '$emp_email'";
 		$result = mysqli_query($conn,$sql_query1);
 		$num_row = mysqli_num_rows($result);
 
@@ -32,22 +33,30 @@
 		}
 
 		else{
-			$sql_query2 = "SELECT m_tel from member where m_tel = '$m_tel'";
+			$sql_query2 = "SELECT emp_tel from employee where emp_tel = '$emp_tel'";
 			$result = mysqli_query($conn,$sql_query2);
 			$num_row = mysqli_num_rows($result);
-
+		if($num_row > 0){
+			echo json_encode(array("statusCode"=>203));
+		}else{
+			$sql_query3 = "SELECT emp_cardid from employee where emp_cardid = '$emp_cardid'";
+			$result = mysqli_query($conn,$sql_query3);
+			$num_row = mysqli_num_rows($result);
+		
 			if($num_row > 0){
-				echo json_encode(array("statusCode"=>203));
+				echo json_encode(array("statusCode"=>204));
 			}
 			else{
-				$sql = "INSERT INTO `member`( `m_password`, `m_firstname`, `m_lastname`, `m_email`, `m_address`, `m_tel`,`emp_id`) 
-				VALUES ('$m_password','$m_firstname','$m_lastname','$m_email','$m_address','$m_tel','$emp_username')";
+				$sql = "INSERT INTO `employee`( `emp_firstname`, `emp_lastname`, `emp_password`, `emp_cardid`, `gender_id`, `Position_id`,`divistion_id`,`emp_email`,`emp_tel`) 
+				VALUES ('$emp_firstname','$emp_lastname','$emp_password','$emp_cardid','$gender_id','$Position_id','$divistion_id','$emp_email','$emp_tel')";
 
 				$result = mysqli_query($conn,$sql);
 				echo json_encode(array("statusCode"=>200));
 			}
 		}
 	}
+
+}
 	else {
 		echo json_encode(array("statusCode"=>201));
 	}
