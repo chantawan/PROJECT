@@ -103,10 +103,10 @@ date_default_timezone_set("Asia/Bangkok");
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-link" aria-current="page" href="page_booking.php">หน้าแรก</a>
-          <a class="nav-link" href="history_booking.php">เอกสารถึงตัวท่าน</a>
-          <a class="nav-link" href="history_topup.php">แฟ้มเอกสาร</a>
-          <a class="nav-link" href="edit_profile.php">คู่มือ</a>
+          <a class="nav-link" aria-current="page" href=".php">หน้าแรก</a>
+          <a class="nav-link" href="document_recive.php">เอกสารถึงตัวท่าน</a>
+          <a class="nav-link" href=".php">แฟ้มเอกสาร</a>
+          <a class="nav-link" href=".php">คู่มือ</a>
           <a class="nav-link" href="logout.php?option=2">ออกจากระบบ</a>     
         </div>   
       </div>

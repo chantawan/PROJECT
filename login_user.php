@@ -77,8 +77,7 @@
                 var emp_firstname = $("#emp_firstname").val();
                 var emp_password = $("#emp_password").val();
 
-                // console.log(emp_firstname)
-                // console.log(emp_password)
+                
 
                 if( emp_firstname != "" && emp_password != "" ){
                     $.ajax({

@@ -40,7 +40,7 @@ $Position_name = $_SESSION['Position_name'];
       background-size: 100% 100%, auto;
     }
 
-    #show_member {
+    #show_employee {
       display: none;
     }
 
@@ -52,7 +52,7 @@ $Position_name = $_SESSION['Position_name'];
       display: none;
     }
 
-    #show_topup {
+    #show_manual {
       display: none;
     }
 
@@ -176,23 +176,31 @@ $Position_name = $_SESSION['Position_name'];
     <div class="container mx-auto" style="width:100%">
       <div class="row">
         <div class="col-2 bgLeft" style="height:150vh"><br>
+        <button class="btn btn-warning btn-sm" style="width:100%; margin-bottom:3%;"
+        onclick="show_index()">หน้าแรก</button>
         <div class="dropdown">
           <button class="btn btn-warning btn-sm dropdown-toggle" style="width:100%; margin-bottom:3%;" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
            การจัดการเอกสาร
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" href="">นำเข้าเอกสาร</a></li>
+            <li><a class="dropdown-item" >นำเข้าเอกสาร</a></li>
             <li><a class="dropdown-item" href="#">ส่งออกเอกสาร</a></li>
             <li><a class="dropdown-item" href="form.php">เอกสารนำเข้า</a></li>
           </ul>
         </div>
-          <button class="btn btn-warning btn-sm" style="width:100%; margin-bottom:3%;" onclick="show_divistion()">ข้อมูลกอง</button>
+        <div class="dropdown">
+          <button class="btn btn-warning btn-sm dropdown-toggle" style="width:100%; margin-bottom:3%;" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+           การจัดการข้อมูล
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item"onclick="show_divistion()" >การจัดการกอง</a></li>
+            <li><a class="dropdown-item" onclick="show_employee()">การจัดการสมาชิก</a></li>
+            <li><a class="dropdown-item" onclick="show_history()">สถิติการรับ-ส่งเอกสาร</a></li>
+          </ul>
+        </div>
+         
           <button class="btn btn-warning btn-sm" style="width:100%; margin-bottom:3%;"
-            onclick="show_member()">ข้อมูลพนักงาน</button>
-          <button class="btn btn-warning btn-sm" style="width:100%; margin-bottom:3%;"
-            onclick="show_history()">สถิติการส่งเอกสาร</button>
-          <button class="btn btn-warning btn-sm" style="width:100%; margin-bottom:3%;"
-            onclick="show_topup()">คู่มือ</button>
+            onclick="show_manual()">คู่มือ</button>
            <button class="btn btn-danger btn-sm" style="width:100%; margin-bottom:3%;">
             <a class="nav-link" href="logout.php?option=1" style = "color:black">ออกจากระบบ</a></button> 
             
@@ -269,7 +277,8 @@ $Position_name = $_SESSION['Position_name'];
         <div class="col-10" style="background-color:white">
           <div id="show_index"><br>
             <center>
-              <h2>ประชาสัมพันธ์</h2>
+             
+              <h2 class="tshadow animate__animated animate__zoomIn">ประชาสัมพันธ์  <img src="img/pla.png" alt="" width="5%"></h2>
             </center>
             <div class="table-responsive-sm">
               <table class="table table-bordered table-sm" style="border:1px; width:100%">
@@ -313,7 +322,7 @@ $Position_name = $_SESSION['Position_name'];
             </div>
           </div>
 
-          <div id="show_topup"><br>
+          <div id="show_manual"><br>
             <center>
               <h2>คู่มือ</h2> 
             </center>
@@ -350,7 +359,7 @@ $Position_name = $_SESSION['Position_name'];
             </div>
           </div>
   
-          <div id="show_member"><br>
+          <div id="show_employee"><br>
             <center>
               <h2>ข้อมูลสมาชิก</h2>
             </center>
@@ -363,7 +372,7 @@ $Position_name = $_SESSION['Position_name'];
               <table class="table table-bordered table-sm" style="border:1px; width:100%">
                 <thead>
                   <tr style="background-color:#212529; color:white;">
-                  <th class="thcenter">รหัสพนักงาน</th>
+                  
                     <th class="thcenter">ชื่อจริง</th>
                     <th class="thcenter">นามสกุล</th>
                     <th class="thcenter">เลขบัตรประชาชน</th>
@@ -629,35 +638,45 @@ $Position_name = $_SESSION['Position_name'];
       return re.test(m_email);
     }
 
+    
+    
     show_index();
     function show_index() {
 
       $("#show_index").show();
       $("#show_history").hide();
-      $("#show_topup").hide();
+      $("#show_manual").hide();
       $("#show_divistion").hide();
-      $("#show_member").hide();
+      $("#show_employee").hide();
 
       $("#myInput5").on('change', function () {
 
   
       });
     }
+    function show_manual() {
+
+      $("#show_index").hide();
+      $("#show_history").hide();
+      $("#show_manual").show();
+      $("#show_divistion").hide();
+      $("#show_employee").hide();
+}
 
     function show_history() {
 
       $("#show_history").show();
-      $("#show_topup").hide();
+      $("#show_manual").hide();
       $("#show_index").hide();
       $("#show_divistion").hide();
-      $("#show_member").hide();
+      $("#show_employee").hide();
 
       $("#myInput4").on('change', function () {
 
       var search_date = $("#myInput4").val();
 
         $.ajax({
-          url: "view_history.php",
+          url: ".php",
           type: "POST",
           cache: false,
           data: {
@@ -676,8 +695,8 @@ $Position_name = $_SESSION['Position_name'];
 
       $("#show_divistion").show();
       $("#show_index").hide();
-      $("#show_member").hide();
-      $("#show_topup").hide();
+      $("#show_employee").hide();
+      $("#show_manual").hide();
       $("#show_history").hide();
 
       $.ajax({
@@ -691,12 +710,12 @@ $Position_name = $_SESSION['Position_name'];
       });
     }
 
-    function show_member() {
+    function show_employee() {
 
-      $("#show_member").show();
+      $("#show_employee").show();
       $("#show_index").hide();
       $("#show_divistion").hide();
-      $("#show_topup").hide();
+      $("#show_manual").hide();
       $("#show_history").hide();
 
       $.ajax({
@@ -744,7 +763,7 @@ $Position_name = $_SESSION['Position_name'];
                   '',
                   'success'
                 )
-                show_member();
+                show_employee();
               }
               else{
                 Swal.fire({
@@ -897,7 +916,7 @@ $Position_name = $_SESSION['Position_name'];
           success: function (dataResult) {
             var dataResult = JSON.parse(dataResult);
             if (dataResult.statusCode == 200) {
-              show_member();
+              show_employee();
               Swal.fire({
                 icon: 'success',
                 title: 'แก้ไขข้อมูลสำเร็จ'
@@ -1014,7 +1033,7 @@ $Position_name = $_SESSION['Position_name'];
               success: function (dataResult) {
                 var dataResult = JSON.parse(dataResult);
                 if (dataResult.statusCode == 200) {
-                  show_member();
+                  show_employee();
                   Swal.fire({
                     icon: 'success',
                     title: 'สมัครสมาชิกสำเร็จ',

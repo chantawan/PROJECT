@@ -10,7 +10,7 @@
 		while($row = $result->fetch_assoc()) {
 ?>	
 		<tr>
-		<td><?=$row['emp_id'];?></td>
+		
 			<td><?=$row['emp_firstname'];?></td>
 			<td><?=$row['emp_lastname'];?></td>
 			<td><?=$row['emp_cardid'];?></td>
