@@ -1,10 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="icon" href="img/logo.png" type="image/png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Sarabun&display=swap" rel="stylesheet">
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/jquery-3.5.1.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -132,6 +135,7 @@
     }
   </style>
 <title>Import Document</title>
+<link rel="stylesheet" href="css/themes/darkly.min.css" title="Grundlayout">
 <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -168,6 +172,7 @@
         </div>
 </head>
 <body>
+
 <?php
 //1. เชื่อมต่อ database: 
 include('connect2.php');  //ไฟล์เชื่อมต่อกับ database ที่เราได้สร้างไว้ก่อนหน้านี้
@@ -187,9 +192,10 @@ while($row = mysqli_fetch_array($result)) {
   //echo "<td><a href='.$row['fileupload']'>showfile</a></td> ";
   echo "<td align='center'>"  .$row["fileupload"] . "</td> ";
   echo "<td align='center'>" .$row["dateup"] .  "</td>";
-  echo "<td align='center'> <a href='fileupload/'>View</a>";
-  echo "<td align='center'> <a href='Download.php?filename=/fileupload/202201181054087679.pdf'><fileupload src='fileupload'>Download</a>";
+  echo "<td align='center'> <a href='fileupload' class='btn btn-primary'>View</a>";
+  echo "<td align='center'> <a href='filestodownload\index_download.php'class='btn btn-primary'>Download</a>";
   echo "</tr>";
+  
 }
 echo "</table>";
 //5. close connection
@@ -209,7 +215,7 @@ mysqli_close($con);
     <tr>
       <td align="center" bgcolor="#33FF66">เลือกที่อยู่ไฟล์</td>
       <td bgcolor="#33FF66"><label>
-        <input type="file" name="fileupload" id="fileupload" accept="application/pdf,application/vnd.ms-excel" required="required"/>
+        <input type="file" name="fileupload" id="fileupload"  required="required"/>
       </label></td>
     </tr>
     <tr>
@@ -231,6 +237,8 @@ mysqli_close($con);
 </html>
 </div>
 <?
+header('Content-Type: application/octet-stream; charset=utf-8');
+header('Content-Type: application/pdf');
 header('Content-Disposition: attachment; filename="test.txt"'); 
 readfile('test.txt');
 ?>
