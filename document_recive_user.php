@@ -78,7 +78,7 @@ date_default_timezone_set("Asia/Bangkok");
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-link" aria-current="page" href=".php">หน้าแรก</a>
+          <a class="nav-link" aria-current="page" href="index_user.php">หน้าแรก</a>
           <a class="nav-link" href="document_recive.php">เอกสารถึงตัวท่าน</a>
           <a class="nav-link" href=".php">แฟ้มเอกสาร</a>
           <a class="nav-link" href=".php">คู่มือ</a>
@@ -98,9 +98,8 @@ date_default_timezone_set("Asia/Bangkok");
   <br>
 </head>
 <body>
-  <div>
-  <div class="container btn-success" style = "backgroud-color:back; width:10%;margin-top: 10%; 
-  padding: 0.5%;border: 3px solid black; text-align: center;" >
+  <div class="container btn-success" style = "backgroud-color:back; width:11%; height:80px;
+  padding: 0.5%;border: 3px solid black; text-align: ;" >
     <div class="col">
         <?php
         $sql_query = "SELECT COUNT(document_id) FROM document;
@@ -108,10 +107,12 @@ date_default_timezone_set("Asia/Bangkok");
         $result = mysqli_query($conn,$sql_query);
         ?>
       เอกสารที่ยังไม่ได้อ่าน
+      
     </div>
+    
     </div>
-    </div>
-  </div>
+    
+
     
 </body>
 

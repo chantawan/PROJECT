@@ -198,7 +198,6 @@ $Position_name = $_SESSION['Position_name'];
             <li><a class="dropdown-item" onclick="show_history()">สถิติการรับ-ส่งเอกสาร</a></li>
           </ul>
         </div>
-         
           <button class="btn btn-secondary btn-sm" style="width:100%; margin-bottom:3%;"
             onclick="show_manual()">คู่มือ</button>
            <button class="btn btn-danger btn-sm" style="width:100%; margin-bottom:3%;">
@@ -292,12 +291,14 @@ $Position_name = $_SESSION['Position_name'];
                 <thead>
                   <tr style="background-color:#212529; color:white;">
                     <th class="thcenter">รูป</th>
+                    <th class="thcenter">การจัดการ</th>
+                    
                   </tr>
                 </thead>
                 <tbody id="pacha" style="border:1px; width:100%">
                   
                   <?php                 
-                    $sql_query = "SELECT board_name
+                    $sql_query = "SELECT board_name , board_id
                     FROM board
                     ORDER BY `board_id` ASC";
 
@@ -310,7 +311,13 @@ $Position_name = $_SESSION['Position_name'];
                           
                           <?php
                       echo "<td>"."<img src='".$row['board_name']."' width='10%'>"."</td>"?>
+                      <td style="width:10%;">
+                      <button onclick="OnEdit3(<?=$row['board_id'];?>)" type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal4">แก้ไข</button>
+			                <button onclick="OnDelete3(<?=$row['board_id'];?>)" type="button" class="btn btn-sm btn-danger">ลบ</button>
+		                	</td>
                       </tr>
+                      
+                          </tr>
                       
                     <?php	
                     }                            
@@ -1202,7 +1209,72 @@ console.log(document.getElementById("board_name"))
         }
       });
     });
+    function OnEdit3(id) {
+      $.ajax({
+        url: "select_board.php",
+        type: 'post',
+        data: {
+          board_id: id
+        },
+        success: function (dataResult) {
+          var dataResult = JSON.parse(dataResult);
+          if (dataResult.statusCode == 200) {
 
+            $("#board_id").val(dataResult.board_id);
+            $("#board_name").val(dataResult.board_name);
+          }
+        }
+      });
+    }
+    function OnDelete3(id) {
+      //  alert(id);
+      const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-success mx-2',
+          cancelButton: 'btn btn-danger mx-2'
+        },
+        buttonsStyling: false
+      })
+
+      swalWithBootstrapButtons.fire({
+        title: 'คุณต้องการลบข้อมูลนี้หรือไม่ ?',
+        icon: 'question',
+        // background: 'yellow',
+        showCancelButton: true,
+        cancelButtonText: 'ยกเลิก',
+        confirmButtonText: 'ยืนยัน',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          $.ajax({
+
+            url: "delete_board.php",
+            type: 'post',
+            data: {
+              board_id: id
+            },
+            success: function (dataResult) {
+              var dataResult = JSON.parse(dataResult);
+              if (dataResult.statusCode == 200) {
+                swalWithBootstrapButtons.fire(
+                  'ลบข้อมูลสำเร็จ',
+                  '',
+                  'success'
+                  
+                )
+                header("Refresh:0; url=index_admin.php");
+              }
+              else{
+                Swal.fire({
+                  icon: 'error',
+                  title: 'ไม่สามารถลบได้'
+                })
+              }
+            }
+          });
+        }
+      });
+    }
     
     $(document).ready(function (){
       $('#clear_modal3').on('click', function () {

@@ -30,7 +30,12 @@ date_default_timezone_set("Asia/Bangkok");
     * {
       font-family: 'supermarket';
     }
-
+    .text-pacha{
+      background-repeat: no-repeat;
+      height:50px;
+      font-size:64px;
+      -webkit-text-stroke: 2px white;
+    }
     body {
       background-image: url('img/background.jpg');
       background-repeat: no-repeat;
@@ -41,9 +46,7 @@ date_default_timezone_set("Asia/Bangkok");
     .clear {
       clear: both;
     }
-    #show_table{
-      /* background-color: rgba(255,255,255,0.4); */
-    }
+
     #show_about{
       background-color: rgba(0,0,0 ,0.5);
     }
@@ -87,12 +90,20 @@ date_default_timezone_set("Asia/Bangkok");
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-        <a class="nav-link" aria-current="page" href="index_user.php">หน้าแรก</a>
-          <a class="nav-link" href="document_recive.php">เอกสารถึงตัวท่าน</a>
+          <a class="nav-link" aria-current="page" href="index_manager.php">หน้าแรก</a>
+          <div class="dropdown">
+          <button class="btn btn-secondary btn-sm dropdown-toggle" style="width:100%; margin-bottom:3%;" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+           การจัดการเอกสาร
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" >เอกสารสั่งการรอดำเนินการ</a></li>
+            <li><a class="dropdown-item" href="#">ส่งข้อความ</a></li>
+          </ul>
+        </div>
           <a class="nav-link" href=".php">แฟ้มเอกสาร</a>
           <a class="nav-link" href=".php">คู่มือ</a>
           <a class="nav-link" href="logout.php?option=2">ออกจากระบบ</a>     
-        </div>   
+        </div>
       </div>
       <div style="text-align:right; float:right;">
         <label style="color:#FFFFFF83">ชื่อผู้ใช้ : <?php echo $emp_firstname ?> &nbsp</label>
@@ -100,43 +111,43 @@ date_default_timezone_set("Asia/Bangkok");
       </div>
     </div>
   </nav>
-
   <div>
-    
-    <div id="show_table"><br>
-      <center><img src="img/h1.gif" style="width:20%"></center>
-      <br>
-    <br>
-    </div>
+    <div class="col-10 mb-10" id="show_his" align="center" >
+    <h3 class="text-pacha"><br>ข่าวประชาสัมพันธ์</h3>
+    <div class="table-responsive-sm" style = "margin-top:10%;">
+              <table class="table table-bordered table-sm" style="border:1px; width:auto%">
+                <thead>
+                  <tr style="background-color:#212529; color:white;">
+                    <th class="thcenter"></th>
+                  </tr>
+                </thead>
+                <tbody id="pacha" style="border:1px; width:20%">
+                  <?php                 
+                    $sql_query = "SELECT board_name
+                    FROM board
+                    ORDER BY `board_id` ASC";
 
-    <div class="row mx-auto" id="show_about">
-      <br>
-      <div class="col-2 mb-5"><br> <br><br>
-      <h3 style="transform: rotate(-90deg); color:white;"><hr style="color:white">เกี่ยวกับเรา</h3>
-      </div>
-      <div class="col-5 mb-5" style="padding-right:0px;" ><br> <br>
-        <img src="img/comu.png" width="85%" class="shadowx">
-      </div>
-      <div class="col-5 mb-5" style="color:white; font-size:20px; padding-left:0px;"><br><br>
-        
-      ระบบสารบรรณอิเล็กทรอนิกส์ สำหรับหน่วยงานภาครัฐ <br>
-      ระบบให้บริการรับส่ง หนังสือ จัดเก็บเอกสาร เพื่อส่งต่อ<br>
-      สั่งการและลงนามในเอกสารหรือส่งเข้าระบบหนังสือเวียน<br>
-      ที่มีการลงนาม รับทราบ ผ่านระบบด้วยวิธีการทาง<br>
-      อิเล็กทรอนิกส์ สามารถจำกัดสิทธิ์ในการเข้าถึงเอกสาร<br>
-      รองรับการปฏิบัติงานของผู้ใช้งานได้พร้อมๆ กัน<br>
-    </div>
-    </div>
-    <div class="col-10 mb-10" id="show_his" align="right">
-    <h3 class="text-black"><br><br><br><br><br>ข่าวประชาสัมพันธ์</h3>
-      
-    </div>
-    
-    <div class="row mx-auto" id="show_about">
-    <h2 class="text-white" style="padding-left:150px"><br><img src="img/logoUser.png" width="10%" alt=""> เทศบาลเมืองปัตตานี
+                    $result = mysqli_query($conn,$sql_query);
+                    $num_row = mysqli_num_rows($result);
+
+                    while($row = $result->fetch_assoc()) {
+                  ?>	
+                      <th>
+                          <?php
+                      echo "<td>"."<img src='".$row['board_name']."' width='50%' hight>"."</td>"?>
+                      </th>
+                    <?php	
+                    }                            
+                    ?>
+                </tbody>
+                <tbody id="myTable5" style="border:1px; width:100%">
+
+                </tbody>
+              </table>
+            </div>
+<div class="row mx-auto" id="show_about">
+<h2 class="text-white" style="padding-left:150px"><br><img src="img/logoUser.png" width="10%" alt=""> เทศบาลเมืองปัตตานี
 ถนนเดชา ตำบลสะบารัง อำเภอเมือง จังหวัดปัตตานี 94000</h2>
-      <div class="col-8 mb-5 mx-auto"><br>
-
         <p class="text-white" style="font-size:20px;">
         <img src="img/phone.png" width="5%" alt=""> โทร. 073-335918<br><br>
         <img src="img/phone.png" width="5%" alt=""> โทรสาร 073-335919<br><br>
@@ -145,7 +156,7 @@ date_default_timezone_set("Asia/Bangkok");
       
     </div>
 
-  </div> 
+  
 </body>
 
 </html>
