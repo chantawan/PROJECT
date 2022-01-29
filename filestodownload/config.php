@@ -4,7 +4,7 @@
 $db_host        = 'localhost';      /* Standard: localhost */
 $db_user        = 'root';      /* User name */
 $db_password    = "";       /* Password */
-$db_name        = 'project';   /* Name of the database */
+$db_name        = 'project2';   /* Name of the database */
 $db_table       = 'newfiles';       /* Table in the database for storing file data */
 
 /* Set file path for downloads without slash at the end */
