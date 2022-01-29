@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" href="img/logo.png" type="image/png">
+    <link rel="icon" href="img/logoUser1.png" type="image/png">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/jquery-3.5.1.min.js"></script>
@@ -32,7 +32,7 @@
             text-shadow: 2px 2px 4px #000000;
         }
         body{      
-            background-image: url('img/blackgroup.jpg');
+            background-image: url('img/background.jpg');
             background-repeat: no-repeat;
             background-position: center center;
             background-attachment: fixed;
@@ -44,12 +44,12 @@
     <div class="container mt-4">
         <div class="row">
             <div class="col-md-12">
-            <center><h2 class="tshadow">สำนักงานเทศบาลเมืองปัตตานี <img src="img/logo.png" width="3%" alt=""></h2></center><br>
+            <center><h2 class="tshadow">สำนักงานเทศบาลเมืองปัตตานี <img src="img/logoUser1.png" width="3%" alt=""></h2></center><br>
                 <div class="card mx-auto"  style="width:80%">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6 ">
-                            <center><img src="img/logo.png" width="70%" alt=""></center>
+                            <center><img src="img/icon.png" width="70%" alt=""></center>
                             </div>
                             <div class="col-md-6"><br>
                                <center><h4>ยินดีต้อนรับ</h4></center><br>

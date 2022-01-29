@@ -5,7 +5,7 @@ if(!isset($_SESSION['emp_id'])){
    header('Location: login_user.php');
 }
 
-$m_id = $_SESSION['emp_id'];
+$emp_id = $_SESSION['emp_id'];
 $emp_firstname = $_SESSION['emp_firstname'];
 $Position_name = $_SESSION['Position_name'];
 
@@ -16,7 +16,7 @@ date_default_timezone_set("Asia/Bangkok");
 <html>
 
 <head>
-  <link rel="icon" href="img/logo.png" type="image/png">
+  <link rel="icon" href="img/logoUser.png" type="image/png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <script src="js/bootstrap.bundle.min.js"></script>
@@ -32,7 +32,7 @@ date_default_timezone_set("Asia/Bangkok");
     }
 
     body {
-      background-image: url('img/blackgroup.jpg');
+      background-image: url('img/background.jpg');
       background-repeat: no-repeat;
       background-position: center center;
       background-attachment: fixed;
@@ -47,8 +47,7 @@ date_default_timezone_set("Asia/Bangkok");
     #show_about{
       background-color: rgba(0,0,0 ,0.5);
     }
-    #show_2{
-      background-image: url('img/paper.png');
+    #show_his{
       background-repeat: no-repeat;
       background-position: left left;
       /* background-attachment: fixed; */
@@ -63,18 +62,6 @@ date_default_timezone_set("Asia/Bangkok");
       position:fixed;
       width:100%;
       z-index:1;
-    }
-    .test{
-      background-image: url('img/paper.png');
-      background-repeat: no-repeat;
-      background-position: center center;
-      /* background-attachment: fixed; */
-      background-size: 80% 80%, auto;
-      height:500px;
-      padding-top:100px;
-      padding-left:150px;
-      font-size:180px;
-      -webkit-text-stroke: 2px white;
     }
     .shadowx{
       box-shadow:  8px 8px rgba(0, 0, 0, 0.25);
@@ -100,16 +87,8 @@ date_default_timezone_set("Asia/Bangkok");
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-link" aria-current="page" href=".php">หน้าแรก</a>
-          <div class="dropdown">
-          <button class="btn  dropdown-toggle" style="width:100%; margin-bottom:3%; color:grey;" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-           เอกสารถึงตัวท่าน
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" href="">เอกสารรอดำเนินการ</a></li>
-            <li><a class="dropdown-item" href="#">ส่งข้อความ</a></li>
-          </ul>
-        </div>
+        <a class="nav-link" aria-current="page" href="index_user.php">หน้าแรก</a>
+          <a class="nav-link" href="document_recive.php">เอกสารถึงตัวท่าน</a>
           <a class="nav-link" href=".php">แฟ้มเอกสาร</a>
           <a class="nav-link" href=".php">คู่มือ</a>
           <a class="nav-link" href="logout.php?option=2">ออกจากระบบ</a>     
@@ -117,7 +96,7 @@ date_default_timezone_set("Asia/Bangkok");
       </div>
       <div style="text-align:right; float:right;">
         <label style="color:#FFFFFF83">ชื่อผู้ใช้ : <?php echo $emp_firstname ?> &nbsp</label>
-        <label style="color:#FFFFFF83">สถานะ : <?php echo $Position_name ?> &nbsp</label>
+        <label style="color:#FFFFFF83">บทบาท : <?php echo $Position_name ?> &nbsp</label>
       </div>
     </div>
   </nav>
@@ -136,7 +115,7 @@ date_default_timezone_set("Asia/Bangkok");
       <h3 style="transform: rotate(-90deg); color:white;"><hr style="color:white">เกี่ยวกับเรา</h3>
       </div>
       <div class="col-5 mb-5" style="padding-right:0px;" ><br> <br>
-        <img src="img/Computer.png" width="85%" class="shadowx">
+        <img src="img/comu.png" width="85%" class="shadowx">
       </div>
       <div class="col-5 mb-5" style="color:white; font-size:20px; padding-left:0px;"><br><br>
         
@@ -148,18 +127,13 @@ date_default_timezone_set("Asia/Bangkok");
       รองรับการปฏิบัติงานของผู้ใช้งานได้พร้อมๆ กัน<br>
     </div>
     </div>
-    <div class="col-10 mb-10" id="show_2" align="right">
-    <h3 class="text-dark"><br><br><br><br><br>ประวัติการจัดตั้งเทศบาล</h3>
-    <h3 class="text-dark">การจัดตั้งเทศบาลเมืองปัตตานีในเริ่มแรกได้รวมตำบล<br>
-                          อันเป็นที่ตั้งศาลากลางจังหวัดปัตตานีจำนวน 3 ตำบล<br>
-                          ได้แก่ ตำบลสะบารัง ตำบลอาเนาะรู และตำบลจะบังติกอตราพระราชกฤษฎีกา
-                          จัดตั้งเป็นเทศบาลเมืองปัตตานีเมื่อพุทธศักราช 2478 โดยอาศัยอำนาจแห่งพระราชบัญญัติจัดระเบียบเทศบาลพุทธศักราช 2476</h3><br>
-      <div class="col-6 mb-4 mx-auto"><br><br>
-      </div>
+    <div class="col-10 mb-10" id="show_his" align="right">
+    <h3 class="text-black"><br><br><br><br><br>ข่าวประชาสัมพันธ์</h3>
+      
     </div>
     
     <div class="row mx-auto" id="show_about">
-    <h2 class="text-white" style="padding-left:150px"><br><img src="img/logo.png" width="10%" alt=""> เทศบาลเมืองปัตตานี
+    <h2 class="text-white" style="padding-left:150px"><br><img src="img/logoUser.png" width="10%" alt=""> เทศบาลเมืองปัตตานี
 ถนนเดชา ตำบลสะบารัง อำเภอเมือง จังหวัดปัตตานี 94000</h2>
       <div class="col-8 mb-5 mx-auto"><br>
 

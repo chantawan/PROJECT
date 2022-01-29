@@ -32,7 +32,7 @@ date_default_timezone_set("Asia/Bangkok");
     }
 
     body {
-      background-image: url('img/blackgroup.jpg');
+      background-image: url('img/background.jpg');
       background-repeat: no-repeat;
       background-position: center center;
       background-attachment: fixed;

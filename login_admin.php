@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" href="img/logo.png" type="image/png">
+    <link rel="icon" href="img/login2.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/bootstrap.bundle.min.js"></script>
@@ -33,7 +33,7 @@
             text-shadow: 2px 2px 4px #000000;
         }
         body{      
-            background-image: url('img/blackgroup.jpg');
+            background-image: url('img/background.jpg');
             background-repeat: no-repeat;
             background-position: center center;
             background-attachment: fixed;
@@ -50,10 +50,10 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6 ">
-                            <center><img src="img/login.png" width="70%" alt=""></center>
+                            <center><img src="img/login2.png" width="70%" alt=""></center>
                             </div>
                             <div class="col-md-6"><br>
-                               <center><h4>เจ้าหน้าที่</h4></center><br>
+                               <center><h4>ผู้ดูแล</h4></center><br>
                                 <div class="mb-3 mx-auto" style="width:70%" >
                                     <center><input type="text" class="form-control" id="emp_firstname" name="emp_firstname" placeholder="ชื่อผู้ใช้" required></center>
                                 </div>

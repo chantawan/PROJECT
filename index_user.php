@@ -16,7 +16,7 @@ date_default_timezone_set("Asia/Bangkok");
 <html>
 
 <head>
-  <link rel="icon" href="img/logo.png" type="image/png">
+  <link rel="icon" href="img/logoUser.png" type="image/png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <script src="js/bootstrap.bundle.min.js"></script>
@@ -30,9 +30,14 @@ date_default_timezone_set("Asia/Bangkok");
     * {
       font-family: 'supermarket';
     }
-
+    .text-pacha{
+      background-repeat: no-repeat;
+      height:50px;
+      font-size:64px;
+      -webkit-text-stroke: 2px white;
+    }
     body {
-      background-image: url('img/blackgroup.jpg');
+      background-image: url('img/background.jpg');
       background-repeat: no-repeat;
       background-position: center center;
       background-attachment: fixed;
@@ -41,14 +46,11 @@ date_default_timezone_set("Asia/Bangkok");
     .clear {
       clear: both;
     }
-    #show_table{
-      /* background-color: rgba(255,255,255,0.4); */
-    }
+
     #show_about{
       background-color: rgba(0,0,0 ,0.5);
     }
-    #show_2{
-      background-image: url('img/paper.png');
+    #show_his{
       background-repeat: no-repeat;
       background-position: left left;
       /* background-attachment: fixed; */
@@ -62,21 +64,6 @@ date_default_timezone_set("Asia/Bangkok");
     .navbar{
       position:fixed;
       width:100%;
-      z-index:1;
-    }
-    .test{
-      background-image: url('img/paper.png');
-      background-repeat: no-repeat;
-      background-position: center center;
-      /* background-attachment: fixed; */
-      background-size: 80% 80%, auto;
-      height:500px;
-      padding-top:100px;
-      padding-left:150px;
-      font-size:180px;
-      -webkit-text-stroke: 2px white;
-    }
-    #i-stadium{
       z-index:1;
     }
     .shadowx{
@@ -103,7 +90,7 @@ date_default_timezone_set("Asia/Bangkok");
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-link" aria-current="page" href=".php">หน้าแรก</a>
+          <a class="nav-link" aria-current="page" href="index_user.php">หน้าแรก</a>
           <a class="nav-link" href="document_recive.php">เอกสารถึงตัวท่าน</a>
           <a class="nav-link" href=".php">แฟ้มเอกสาร</a>
           <a class="nav-link" href=".php">คู่มือ</a>
@@ -116,48 +103,43 @@ date_default_timezone_set("Asia/Bangkok");
       </div>
     </div>
   </nav>
-
   <div>
-    
-    <div id="show_table"><br>
-      <center><img src="img/h1.gif" style="width:20%"></center>
-      <br>
-    <br>
-    </div>
+    <div class="col-10 mb-10" id="show_his" align="center" >
+    <h3 class="text-pacha"><br>ข่าวประชาสัมพันธ์</h3>
+    <div class="table-responsive-sm" style = "margin-top:10%;">
+              <table class="table table-bordered table-sm" style="border:1px; width:auto%">
+                <thead>
+                  <tr style="background-color:#212529; color:white;">
+                    <th class="thcenter"></th>
+                  </tr>
+                </thead>
+                <tbody id="pacha" style="border:1px; width:20%">
+                  <?php                 
+                    $sql_query = "SELECT board_name
+                    FROM board
+                    ORDER BY `board_id` ASC";
 
-    <div class="row mx-auto" id="show_about">
-      <br>
-      <div class="col-2 mb-5"><br> <br><br>
-      <h3 style="transform: rotate(-90deg); color:white;"><hr style="color:white">เกี่ยวกับเรา</h3>
-      </div>
-      <div class="col-5 mb-5" style="padding-right:0px;" ><br> <br>
-        <img src="img/Computer.png" width="85%" class="shadowx">
-      </div>
-      <div class="col-5 mb-5" style="color:white; font-size:20px; padding-left:0px;"><br><br>
-        
-      ระบบสารบรรณอิเล็กทรอนิกส์ สำหรับหน่วยงานภาครัฐ <br>
-      ระบบให้บริการรับส่ง หนังสือ จัดเก็บเอกสาร เพื่อส่งต่อ<br>
-      สั่งการและลงนามในเอกสารหรือส่งเข้าระบบหนังสือเวียน<br>
-      ที่มีการลงนาม รับทราบ ผ่านระบบด้วยวิธีการทาง<br>
-      อิเล็กทรอนิกส์ สามารถจำกัดสิทธิ์ในการเข้าถึงเอกสาร<br>
-      รองรับการปฏิบัติงานของผู้ใช้งานได้พร้อมๆ กัน<br>
-    </div>
-    </div>
-    <div class="col-10 mb-10" id="show_2" align="right">
-    <h3 class="text-dark"><br><br><br><br><br>ประวัติการจัดตั้งเทศบาล</h3>
-    <h3 class="text-dark">การจัดตั้งเทศบาลเมืองปัตตานีในเริ่มแรกได้รวมตำบล<br>
-                          อันเป็นที่ตั้งศาลากลางจังหวัดปัตตานีจำนวน 3 ตำบล<br>
-                          ได้แก่ ตำบลสะบารัง ตำบลอาเนาะรู และตำบลจะบังติกอตราพระราชกฤษฎีกา
-                          จัดตั้งเป็นเทศบาลเมืองปัตตานีเมื่อพุทธศักราช 2478 โดยอาศัยอำนาจแห่งพระราชบัญญัติจัดระเบียบเทศบาลพุทธศักราช 2476</h3><br>
-      <div class="col-6 mb-4 mx-auto"><br><br>
-      </div>
-    </div>
-    
-    <div class="row mx-auto" id="show_about">
-    <h2 class="text-white" style="padding-left:150px"><br><img src="img/logo.png" width="10%" alt=""> เทศบาลเมืองปัตตานี
+                    $result = mysqli_query($conn,$sql_query);
+                    $num_row = mysqli_num_rows($result);
+
+                    while($row = $result->fetch_assoc()) {
+                  ?>	
+                      <th>
+                          <?php
+                      echo "<td>"."<img src='".$row['board_name']."' width='50%' hight>"."</td>"?>
+                      </th>
+                    <?php	
+                    }                            
+                    ?>
+                </tbody>
+                <tbody id="myTable5" style="border:1px; width:100%">
+
+                </tbody>
+              </table>
+            </div>
+<div class="row mx-auto" id="show_about">
+<h2 class="text-white" style="padding-left:150px"><br><img src="img/logoUser.png" width="10%" alt=""> เทศบาลเมืองปัตตานี
 ถนนเดชา ตำบลสะบารัง อำเภอเมือง จังหวัดปัตตานี 94000</h2>
-      <div class="col-8 mb-5 mx-auto"><br>
-
         <p class="text-white" style="font-size:20px;">
         <img src="img/phone.png" width="5%" alt=""> โทร. 073-335918<br><br>
         <img src="img/phone.png" width="5%" alt=""> โทรสาร 073-335919<br><br>
@@ -166,7 +148,7 @@ date_default_timezone_set("Asia/Bangkok");
       
     </div>
 
-  </div> 
+  
 </body>
 
 </html>

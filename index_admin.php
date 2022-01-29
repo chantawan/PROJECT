@@ -16,7 +16,7 @@ $Position_name = $_SESSION['Position_name'];
 <html lang="en">
 
 <head>
-  <link rel="icon" href="img/logo.png" type="image/png">
+  <link rel="icon" href="img/login2.png" type="image/png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <script src="js/bootstrap.bundle.min.js"></script>
@@ -33,7 +33,7 @@ $Position_name = $_SESSION['Position_name'];
     }
 
     body {
-      background-image: url('img/blackgroup.jpg');
+      background-image: url('img/background.jpg');
       background-repeat: no-repeat;
       background-position: center center;
       background-attachment: fixed;
@@ -157,7 +157,7 @@ $Position_name = $_SESSION['Position_name'];
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark mx-auto" style="width:100%">
           <div class="container-fluid">
             <div class="col-md-6">
-              <a class="navbar-brand" href="index_admin.php"><img src="img/logo.png" width="5%">
+              <a class="navbar-brand" href="index_admin.php"><img src="img/icon.png" width="5%">
               สำนักงานเทศบาลเมืองปัตตานี
               </a>
             </div>
@@ -176,10 +176,10 @@ $Position_name = $_SESSION['Position_name'];
     <div class="container mx-auto" style="width:100%">
       <div class="row">
         <div class="col-2 bgLeft" style="height:150vh"><br>
-        <button class="btn btn-warning btn-sm" style="width:100%; margin-bottom:3%;"
+        <button class="btn btn-secondary btn-sm" style="width:100%; margin-bottom:3%;"
         onclick="show_index()">หน้าแรก</button>
         <div class="dropdown">
-          <button class="btn btn-warning btn-sm dropdown-toggle" style="width:100%; margin-bottom:3%;" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          <button class="btn btn-secondary btn-sm dropdown-toggle" style="width:100%; margin-bottom:3%;" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
            การจัดการเอกสาร
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -189,7 +189,7 @@ $Position_name = $_SESSION['Position_name'];
           </ul>
         </div>
         <div class="dropdown">
-          <button class="btn btn-warning btn-sm dropdown-toggle" style="width:100%; margin-bottom:3%;" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          <button class="btn btn-secondary btn-sm dropdown-toggle" style="width:100%; margin-bottom:3%;" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
            การจัดการข้อมูล
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -199,7 +199,7 @@ $Position_name = $_SESSION['Position_name'];
           </ul>
         </div>
          
-          <button class="btn btn-warning btn-sm" style="width:100%; margin-bottom:3%;"
+          <button class="btn btn-secondary btn-sm" style="width:100%; margin-bottom:3%;"
             onclick="show_manual()">คู่มือ</button>
            <button class="btn btn-danger btn-sm" style="width:100%; margin-bottom:3%;">
             <a class="nav-link" href="logout.php?option=1" style = "color:black">ออกจากระบบ</a></button> 
@@ -277,17 +277,45 @@ $Position_name = $_SESSION['Position_name'];
         <div class="col-10" style="background-color:white">
           <div id="show_index"><br>
             <center>
-             
-              <h2 class="tshadow animate__animated animate__zoomIn">ประชาสัมพันธ์  <img src="img/pla.png" alt="" width="5%"></h2>
+              <h2>ประชาสัมพันธ์</h2>
+              <div class="mb-3">
+              <input id="board_name" type='file'  accept="image/png, image/jpeg">
+            <input type="hidden" id="b64">
+            <img id="img" height="120">
+                        
+                      </div>
+              <button type="button" class="btn btn-success" id="botsave_file" >อัพโหลด</button>
             </center>
+           
             <div class="table-responsive-sm">
               <table class="table table-bordered table-sm" style="border:1px; width:100%">
                 <thead>
                   <tr style="background-color:#212529; color:white;">
-                    
+                    <th class="thcenter">รูป</th>
                   </tr>
                 </thead>
-                
+                <tbody id="pacha" style="border:1px; width:100%">
+                  
+                  <?php                 
+                    $sql_query = "SELECT board_name
+                    FROM board
+                    ORDER BY `board_id` ASC";
+
+                    $result = mysqli_query($conn,$sql_query);
+                    $num_row = mysqli_num_rows($result);
+
+                    while($row = $result->fetch_assoc()) {
+                  ?>	
+                      <tr >
+                          
+                          <?php
+                      echo "<td>"."<img src='".$row['board_name']."' width='10%'>"."</td>"?>
+                      </tr>
+                      
+                    <?php	
+                    }                            
+                    ?>
+                </tbody>
                 <tbody id="myTable5" style="border:1px; width:100%">
 
                 </tbody>
@@ -643,17 +671,16 @@ $Position_name = $_SESSION['Position_name'];
     show_index();
     function show_index() {
 
-      $("#show_index").show();
-      $("#show_history").hide();
-      $("#show_manual").hide();
-      $("#show_divistion").hide();
-      $("#show_employee").hide();
+$("#show_index").show();
+$("#show_history").hide();
+$("#show_manual").hide();
+$("#show_divistion").hide();
+$("#show_employee").hide();
 
-      $("#myInput5").on('change', function () {
+$("#myInput5").on('change', function () {
 
-  
-      });
-    }
+});
+}
     function show_manual() {
 
       $("#show_index").hide();
@@ -993,7 +1020,7 @@ $Position_name = $_SESSION['Position_name'];
 
       });
     });
-
+   
     $(document).ready(function () {
       $('#butsave').on('click', function () {
         var emp_firstname = $('#emp_firstname2').val();
@@ -1073,6 +1100,67 @@ $Position_name = $_SESSION['Position_name'];
         }
       });
     });
+
+    $(document).ready(function () {
+      $('#botsave_file').on('click', function () {
+
+        var board_name = $('#board_name').val();
+        var board_name = document.getElementById("img").src;
+
+        if (board_name != "") {
+          $.ajax({
+            url: "save_file.php",
+            type: "POST",
+            data: {
+              board_name: board_name
+            },
+            cache: false,
+            success: function (dataResult) {
+              var dataResult = JSON.parse(dataResult);
+              if (dataResult.statusCode == 200) {
+                show_divistion();
+                Swal.fire({
+                  icon: 'success',
+                  title: 'เพิ่มไฟล์สำเร็จ',
+                })
+                show_index();
+              }
+              else if (dataResult.statusCode == 201) {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'ผิดพลาดลองใหม่',
+                })
+              }
+              
+            }
+          });
+        }
+        else {
+          Swal.fire('กรุณากรอกข้อมูลให้ครบ');
+        }
+      });
+    });
+    function readFile() {
+
+var test = ''
+
+if (this.files && this.files[0]) {
+
+    var FR = new FileReader();
+
+    FR.addEventListener("load", function (e) {
+        document.getElementById("img").src = e.target.result;
+        document.getElementById("b64").innerHTML = e.target.result;
+        return e.target.result
+    });
+
+    FR.readAsDataURL(this.files[0]);
+  }
+}
+document.getElementById("board_name").addEventListener("change", readFile);
+
+console.log(document.getElementById("board_name"))
+
 
     $(document).ready(function () {
       $('#butsave_divistion').on('click', function () {
