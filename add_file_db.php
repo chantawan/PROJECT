@@ -1,4 +1,5 @@
 <meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css?family=Sarabun&display=swap" rel="stylesheet">
 <?php
 //1. เชื่อมต่อ database: 
 include('connect2.php');  //ไฟล์เชื่อมต่อกับ database ที่เราได้สร้างไว้ก่อนหน้าน้ี
@@ -6,10 +7,10 @@ include('connect2.php');  //ไฟล์เชื่อมต่อกับ dat
 $fileupload= (isset($_POST['fileupload']) ? $_POST['fileupload'] : '');	
 
 //ฟังก์ชั่นวันที่
-        date_default_timezone_set('Asia/Bangkok');
+    /*    date_default_timezone_set('Asia/Bangkok');
 	$date = date("Ymd");	
 //ฟังก์ชั่นสุ่มตัวเลข
-         $numrand = (mt_rand());
+         $numrand = (mt_rand());      */
 //เพิ่มไฟล์
 $upload=$_FILES['fileupload'];
 if($upload !='') {   //not select file
@@ -17,10 +18,10 @@ if($upload !='') {   //not select file
             $path="fileupload/";  
 
             //เอาชื่อไฟล์เก่าออกให้เหลือแต่นามสกุล
-            $type = strrchr($_FILES['fileupload']['name'],".");
+            $type = basename($_FILES['fileupload']['name'],".");
                 
             //ตั้งชื่อไฟล์ใหม่โดยเอาเวลาไว้หน้าชื่อไฟล์เดิม
-            $newname = $date.$numrand.$type;
+            $newname = $type;
             $path_copy=$path.$newname;
             $path_link="fileupload/".$newname;
 
